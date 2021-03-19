@@ -1,0 +1,98 @@
+---
+title: "data607proj3"
+author: "Richard"
+date: "3/18/2021"
+output: html_document
+---
+# packages
+```{r}
+library(tidyverse)
+```
+
+# loading data
+
+```{r}
+url = 'https://raw.githubusercontent.com/tagensingh/SPS-DATA607-P-3/main/indeed_job_dataset.csv'
+data = read.csv(url)
+dim(data)
+```
+
+# functions used
+
+```{r}
+#function that transforms "python list" string into R vector
+clean_string = function(string){
+list = str_replace(string,"\\[","") %>%
+  str_replace("\\]","") %>%
+  str_replace_all("\\'","") %>%
+  str_split(",")
+return (trimws(list[[1]]))
+}
+```
+
+
+# cleaning data
+
+
+#### job title
+
+```{r}
+# subset job titles
+job_title = unique(data[c('Job_Title','Job_Type')])
+head(job_title)
+```
+
+#### company
+
+```{r}
+# subset companies
+companies = unique(data[c('Company','No_of_Reviews','No_of_Stars','Company_Revenue','Company_Employees','Company_Industry')])
+# drop nulls
+companies = drop_na(companies)
+head(companies)
+```
+
+#### jobs
+
+```{r}
+# subset jobs
+jobs = data[c('X','Job_Title','Company','Queried_Salary','Date_Since_Posted','Location','Link')]
+head(jobs)
+```
+
+#### skills
+
+```{r}
+data = data[data$No_of_Skills>0,]
+x = data$X
+strings = data$Skill
+count = c()
+x_new = c()
+skill_list = c()
+
+# create vector count
+for (string in strings){
+  count = c(count,length(clean_string(string)))
+}
+
+#create skills dataframe
+for (i in seq(length(count))){
+  x_new = c(x_new,rep(x[i],count[i]))
+  skill_list = c(skill_list,clean_string(strings[i]))
+}
+
+skills = data.frame(x_new,skill_list)
+head(skills)
+```
+
+# download tables as csv
+
+```{r}
+#write.csv(job_title,"job_title.csv",row.names=FALSE)
+#write.csv(companies,"companies.csv",row.names=FALSE)
+#write.csv(jobs,"jobs.csv",row.names=FALSE)
+#write.csv(skills,"skills.csv",row.names=FALSE)
+```
+
+
+
