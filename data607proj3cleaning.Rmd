@@ -7,6 +7,7 @@ output: html_document
 # packages
 ```{r}
 library(tidyverse)
+library(wordcloud)
 ```
 
 # loading data
@@ -92,6 +93,35 @@ head(skills)
 #write.csv(companies,"companies.csv",row.names=FALSE)
 #write.csv(jobs,"jobs.csv",row.names=FALSE)
 #write.csv(skills,"skills.csv",row.names=FALSE)
+```
+
+# EDA
+
+#### most popular skills
+
+```{r}
+# most popular skills
+skills %>%
+  group_by_at('skill_list')%>%
+  summarise(percent = n()/dim(skills)[1])%>%
+  arrange(desc(percent))%>%
+  head(10)%>%
+  ggplot(aes(reorder(skill_list,percent),percent))+geom_bar(stat = 'identity')+coord_flip()+labs(x = 'Skills',title = "Most Desired Data Science Skills Skills")
+
+```
+
+#### wordcloud
+
+```{r}
+skill_count = skills %>%
+  group_by(skill_list)%>%
+  summarise(frequency = n())%>%
+  arrange(desc(frequency))
+  
+
+wordcloud(skill_count$skill_list,skill_count$frequency,min.freq = 1,max.words=200, random.order=FALSE, rot.per=0.35,            colors=brewer.pal(8, "Dark2"))
+
+
 ```
 
 
