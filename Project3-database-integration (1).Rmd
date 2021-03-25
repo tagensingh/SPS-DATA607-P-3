@@ -1,0 +1,218 @@
+---
+date: "`r Sys.Date()`" 
+output:
+  html_document:
+    theme: default
+    highlight: espresso
+    toc: yes
+    toc_depth: 5
+    toc_float:
+      collapsed: yes
+  pdf_document:
+    toc: yes
+    toc_depth: '5'
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(eval = TRUE, results = TRUE, message = FALSE, warning = FALSE)
+```
+
+
+```{r results = FALSE, message = FALSE, warning = FALSE}
+library(tidyverse)
+library(ggplot2)
+library(dplyr)
+library (readr)
+library(RMySQL)
+```
+
+
+### Load data from RDS into R
+### Initialize RDS Database connection
+```{r}
+user <-'admin'
+password <-'!passKey607'
+host<-'data607-project2.cbs1lxtno2zh.us-east-2.rds.amazonaws.com'
+
+dbname <-'d_607_p3'
+connection = dbConnect(MySQL(), user = user, password = password, dbname = dbname, host = host)
+```
+
+### Get data function
+```{r}
+get_data<- function(table_name) {
+dataset <- tbl(connection,dbplyr::in_schema(dbname, table_name))
+  return(dataset)
+}
+```
+
+### The following is the query that returns all relevant records for project 3
+```{r}
+
+
+d607_p3_all_recs<-as.data.frame(get_data('view_d607_p3_all_recs'))
+
+tibble(d607_p3_all_recs)
+
+head(d607_p3_all_recs)
+
+```
+#The following are the list of tables used
+
+
+```{r tblcompany}
+
+tblcompany<-as.data.frame(get_data('company'))
+
+tibble(tblcompany)
+
+```
+
+
+```{r tblcemployee}
+
+tblcemployee<-as.data.frame(get_data('company_employee'))
+
+tibble(tblcemployee)
+
+```
+
+
+```{r tblcindustry}
+
+tblcindustry<-as.data.frame(get_data('company_industry'))
+
+tibble(tblcindustry)
+
+```
+
+
+```{r tblcrevenue}
+
+tblcrevenue<-as.data.frame(get_data('company_revenue'))
+
+tibble(tblcrevenue)
+
+```
+
+
+```{r tbljobmaster}
+
+tbljobmaster<-as.data.frame(get_data('job_master'))
+
+tibble(tbljobmaster)
+
+```
+
+
+```{r tbljobskills}
+
+tbljobskills<-as.data.frame(get_data('job_skills'))
+
+tibble(tbljobskills)
+
+```
+
+
+```{r tblsalary}
+
+tblsalary<-as.data.frame(get_data('salary'))
+
+tibble(tblsalary)
+
+```
+
+
+```{r tblskills}
+
+tblskills<-as.data.frame(get_data('skills'))
+
+tibble(tblskills)
+
+```
+
+
+```{r tblstate}
+
+tblstate<-as.data.frame(get_data('state'))
+
+tibble(tblstate)
+
+```
+#Analysis by salary and job skill-- need to provide some analysis here
+```{r}
+
+derive_salary <- function(s) {
+        contains_range <- str_detect(s, '-')
+        
+        if (contains_range == TRUE) {
+            text_range <- unlist(str_extract_all(s, '[0-9,]+'))
+            numeric_range <- as.numeric(str_remove_all(text_range, ','))
+            return(mean(c(numeric_range[1], numeric_range[2])))
+        } else {
+            as_text <- str_extract_all(s, '[0-9,]+')
+            as_numeric <- as.numeric(str_remove_all(as_text, ','))
+            return(as_numeric)
+        }
+   
+}
+
+tblsalary$salary<-as.numeric(lapply(tblsalary$salary_range, derive_salary))
+ 
+
+jobmaster_salary = merge(x=tbljobmaster,y=tblsalary,by="salary_id")
+
+
+
+ggplot(jobmaster_salary, aes(x=salary)) + 
+    geom_histogram(binwidth=10000)
+
+
+quantile(jobmaster_salary$salary, c(0, .1, .25, .5, .75, .9, .95, .99))
+#with above we can say that 50% of jobs are in 110k range.
+
+
+
+```
+## Job Analysis by State
+```{r}
+library(mgsub)
+library(ggplot2)
+library(plotly)
+library(dplyr)
+
+# count job post of different state
+jobmaster_state = merge(x=tbljobmaster,y=tblstate,by="state_id")
+
+
+df_jobs <- jobmaster_state %>% group_by(state_district) %>% dplyr::summarize (n = n())
+
+
+df_jobs$hover <- with(df_jobs, paste(state_district, '<br>', "jobs:", n))
+
+# give state boundaries a white border
+l <- list(color = toRGB("white"), width = 2)
+
+# specify some map options
+g <- list(
+  scope = 'usa',
+  projection = list(type = 'albers usa'),
+  showlakes = TRUE,
+  lakecolor = toRGB('white')
+)
+
+# plot the map
+
+plot_geo() %>%
+  add_trace(
+    z = ~df_jobs$n, text = state.name, span = I(0),
+    locations = state.abb, locationmode = 'USA-states'
+  ) %>%colorbar(title = "Data scientist Job Postings") %>%
+  layout(title = 'Data scientist Jobs by State',geo = g)
+
+
+
+```
+
