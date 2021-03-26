@@ -1,0 +1,365 @@
+---
+date: "`r Sys.Date()`" 
+output:
+  html_document:
+    theme: default
+    highlight: espresso
+    toc: yes
+    toc_depth: 5
+    toc_float:
+      collapsed: yes
+  pdf_document:
+    toc: yes
+    toc_depth: '5'
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(eval = TRUE, results = TRUE, message = FALSE, warning = FALSE)
+```
+
+
+```{r results = FALSE, message = FALSE, warning = FALSE}
+library(tidyverse)
+library(ggplot2)
+library(dplyr)
+library (readr)
+library(RMySQL)
+library(gtrendsR)
+library(stats)
+library(DT)
+library(rpart)
+library(fastDummies)
+```
+
+
+### Load data from RDS into R
+### Initialize RDS Database connection
+```{r}
+user <-'admin'
+password <-'!passKey607'
+host<-'data607-project2.cbs1lxtno2zh.us-east-2.rds.amazonaws.com'
+
+dbname <-'d_607_p3'
+connection = dbConnect(MySQL(), user = user, password = password, dbname = dbname, host = host)
+```
+
+### Get data function
+```{r}
+get_data<- function(table_name) {
+dataset <- tbl(connection,dbplyr::in_schema(dbname, table_name))
+  return(dataset)
+}
+```
+
+### The following is the query that returns all relevant records for project 3
+```{r}
+
+d607_p3_all_recs<-as.data.frame(get_data('view_d607_p3_all_recs'))
+
+tibble(d607_p3_all_recs)
+
+head(d607_p3_all_recs)
+
+top_skills <- d607_p3_all_recs %>% 
+                      select(skill_id, skill_desc) %>% 
+                      group_by(skill_desc) %>% 
+                      summarise(n = n()) %>%
+                      arrange(desc(n))
+
+```
+
+
+```{r google-trends}
+hl <-"en-US"
+time <- "2010-01-01 2021-03-20"
+geo <- "US"
+
+# Google Trends for terms
+python_trend <- gtrends(keyword = "Python", geo = geo, time = time, hl = hl)
+sql_trend <- gtrends(keyword = "SQL", geo = geo, time = time, hl = hl)
+ml_trend <- gtrends(keyword = "Machine Learning", geo = geo, time = time, hl = hl)
+r_trend <- gtrends(keyword = "R", geo = geo, time = time, hl = hl)
+hadoop_trend <- gtrends(keyword = "Hadoop", geo = geo, time = time, hl = hl)
+spark_trend <- gtrends(keyword = "Spark", geo = geo, time = time, hl = hl)
+java_trend <- gtrends(keyword = "Java", geo = geo, time = time, hl = hl)
+tableau_trend <- gtrends(keyword = "Tableau", geo = geo, time = time, hl = hl)
+datamining_trend <- gtrends(keyword = "Data Mining", geo = geo, time = time, hl = hl)
+hive_trend <- gtrends(keyword = "Hive", geo = geo, time = time, hl = hl)
+sas_trend <- gtrends(keyword = "SAS", geo = geo, time = time, hl = hl)
+bigtrend_trend <- gtrends(keyword = "Big Data", geo = geo, time = time, hl = hl)
+aws_trend <- gtrends(keyword = "AWS", geo = geo, time = time, hl = hl)
+scala_trend <- gtrends(keyword = "Scala", geo = geo, time = time, hl = hl)
+nosql_trend <- gtrends(keyword = "NoSQL", geo = geo, time = time, hl = hl)
+c_trend <- gtrends(keyword = "C/C++", geo = geo, time = time, hl = hl)
+nlp_trend <- gtrends(keyword = "Natural Language Processing", geo = geo, time = time, hl = hl)
+oracle_trend <- gtrends(keyword = "Oracle", geo = geo, time = time, hl = hl)
+datawarehouse_trend <- gtrends(keyword = "Data Warehouse", geo = geo, time = time, hl = hl)
+linux_trend <- gtrends(keyword = "Linux", geo = geo, time = time, hl = hl)
+ai_trend <- gtrends(keyword = "AI", geo = geo, time = time, hl = hl)
+micrsql_trend <- gtrends(keyword = "Microsoft SQL Server", geo = geo, time = time, hl = hl)
+tensorflow_trend <- gtrends(keyword = "TensorFlow", geo = geo, time = time, hl = hl)
+kafka_trend <- gtrends(keyword = "Kafka", geo = geo, time = time, hl = hl)
+azure_trend <- gtrends(keyword = "Azure", geo = geo, time = time, hl = hl)
+
+```
+
+
+```{r locations-and-related}
+
+# Interest by U.S. DMA
+ml_trend$interest_by_dma %>% drop_na(hits) %>% arrange(desc(hits))
+
+# Interest by City
+ml_trend$interest_by_city %>% drop_na(hits) %>% arrange(desc(hits))
+
+# Related topics
+ml_trend$related_topics 
+
+# Related queries
+ml_trend$related_queries
+
+```
+
+
+
+
+
+```{r join-trends}
+
+# Join trend data for terms rising in interest
+python_trend$interest_over_time$ml_hits = ml_trend$interest_over_time$hits
+python_trend$interest_over_time$spark_hits = spark_trend$interest_over_time$hits
+python_trend$interest_over_time$tableau_hits = tableau_trend$interest_over_time$hits
+python_trend$interest_over_time$kafka_hits = kafka_trend$interest_over_time$hits
+python_trend$interest_over_time$azure_hits = azure_trend$interest_over_time$hits
+
+# Join trend data for terms declining in interest
+sql_trend$interest_over_time$java_hits = java_trend$interest_over_time$hits
+sql_trend$interest_over_time$hadoop_hits = hadoop_trend$interest_over_time$hits
+sql_trend$interest_over_time$datamining_hits = datamining_trend$interest_over_time$hits
+sql_trend$interest_over_time$sas_hits = sas_trend$interest_over_time$hits
+sql_trend$interest_over_time$oracle_hits = oracle_trend$interest_over_time$hits
+
+# Join trend data for terms stable in interest
+r_trend$interest_over_time$scala_hits = scala_trend$interest_over_time$hits
+r_trend$interest_over_time$nosql_hits = nosql_trend$interest_over_time$hits
+r_trend$interest_over_time$c_hits = c_trend$interest_over_time$hits
+r_trend$interest_over_time$datawarehouse_hits = datawarehouse_trend$interest_over_time$hits
+
+# Join trend data for terms that peaked in interest
+bigtrend_trend$interest_over_time$tensorflow_hits = tensorflow_trend$interest_over_time$hits
+
+```
+
+
+
+
+```{r rising}
+
+# Rising interest over time
+ggplot() +
+  geom_line(data=python_trend$interest_over_time, aes(y= hits, x= date, colour="a"), size=1 ) +
+  geom_line(data=python_trend$interest_over_time, aes(y= ml_hits, x= date, colour="b"), size=1) +
+  geom_line(data=python_trend$interest_over_time, aes(y= spark_hits, x= date, colour="c"), size=1) +
+  geom_line(data=python_trend$interest_over_time, aes(y= tableau_hits, x= date, colour="d"), size=1) +
+  geom_line(data=python_trend$interest_over_time, aes(y= azure_hits, x= date, colour="e"), size=1) +
+  xlab("Date") + ylab("Interest over time") +
+  scale_color_discrete(name = "Increasing Interest Over Time", 
+                       labels = c("Python", "Machine Learning", "Spark", "Tableau", "Azure"))
+
+```
+
+
+
+```{r declining}
+
+# Declining interest over time
+ggplot() +
+  geom_line(data=sql_trend$interest_over_time, aes(y=hits, x=date, color="a"), size=1) +
+  geom_line(data=sql_trend$interest_over_time, aes(y=java_hits, x=date, color="b"), size=1) +
+  geom_line(data=sql_trend$interest_over_time, aes(y=hadoop_hits, x=date, color="c"), size=1) +
+  geom_line(data=sql_trend$interest_over_time, aes(y=sas_hits, x=date, color="d"), size=1) +
+  geom_line(data=sql_trend$interest_over_time, aes(y=oracle_hits, x=date, color="e"), size=1) +
+  xlab("Date") + ylab("Interest over time") +
+  scale_color_discrete(name = "Decreasing Interest Over Time", 
+                       labels = c("SQL", "Java", "Hadoop", "SAS", "Oracle"))
+
+```
+
+
+
+
+```{r stable}
+
+# Stable interest over time
+ggplot() +
+  geom_line(data=r_trend$interest_over_time, aes(y=hits, x=date, color="a"), size=1) +
+  geom_line(data=r_trend$interest_over_time, aes(y=scala_hits, x=date, color="b"), size=1) +
+  geom_line(data=r_trend$interest_over_time, aes(y=nosql_hits, x=date, color="c"), size=1) +
+  geom_line(data=r_trend$interest_over_time, aes(y=c_hits, x=date, color="d"), size=1) +
+  geom_line(data=r_trend$interest_over_time, aes(y=datawarehouse_hits, x=date, color="e"), size=1) +
+  xlab("Date") + ylab("Interest over time") +
+  scale_color_discrete(name = "Stable Interest Over Time", 
+                       labels = c("R", "Scala", "NoSQL", "C", "Data Warehouse"))
+
+```
+
+
+
+
+```{r stable}
+
+# Peaked interest over time
+ggplot() +
+  geom_line(data=bigtrend_trend$interest_over_time, aes(y=hits, x=date, color="a"), size=1) +
+  geom_line(data=bigtrend_trend$interest_over_time, aes(y=tensorflow_hits, x=date, color="b"), size=1) +
+  xlab("Date") + ylab("Interest over time") +
+  scale_color_discrete(name = "Peak Popularity", labels = c("Big Data", "Tensorflow"))
+
+```
+
+
+
+```{r prep-data-for-modeling}
+
+# Filter for only top skills
+top_skills$skill_desc[2:11]
+
+df_jobs_top_skills <- d607_p3_all_recs %>% filter(skill_desc %in% top_skills$skill_desc[2:11])
+
+df_jobs_top_skills_dummies <- dummy_cols(df_jobs_top_skills, select_columns = c("skill_desc"),
+                                 remove_first_dummy = TRUE)
+
+df_salary_state <- df_jobs_top_skills_dummies %>% 
+                      distinct(job_id, .keep_all = TRUE) %>% 
+                      select(job_id, salary_range, postal_code)
+
+df_salary_state_dummies <- df_salary_state %>% 
+                                  mutate(CA = ifelse(postal_code == 'CA' , 1, 0),
+	                                       NY = ifelse(postal_code == 'NY' , 1, 0),
+	                                       VA = ifelse(postal_code == 'VA' , 1, 0),
+	                                       TX = ifelse(postal_code == 'TX' , 1, 0),
+	                                       MA = ifelse(postal_code == 'MA' , 1, 0))
+
+df_salary_state_dummies <- df_salary_state_dummies %>% select(-(postal_code))
+
+df_skills_dummies <- df_jobs_top_skills_dummies %>% 
+                              group_by(job_id) %>% 
+                              summarise(skill_desc_Hadoop = max(skill_desc_Hadoop),
+                                        skill_desc_Hive = max(skill_desc_Hive),
+                                        skill_desc_Java = max(skill_desc_Java),
+                                        skill_desc_MachineLearning = max(skill_desc_MachineLearning),
+                                        skill_desc_Python = max(skill_desc_Python),
+                                        skill_desc_R = max(skill_desc_R),
+                                        skill_desc_Spark = max(skill_desc_Spark),
+                                        skill_desc_SQL = max(skill_desc_SQL),
+                                        skill_desc_Tableau = max(skill_desc_Tableau))
+
+df_model <- df_skills_dummies %>% inner_join(df_salary_state_dummies)
+
+```
+
+
+
+```{r modeling}
+
+# Fit model
+fit <- rpart(salary_range ~ skill_desc_Hadoop + skill_desc_Hive + skill_desc_Java + skill_desc_Python +
+               skill_desc_MachineLearning + skill_desc_R + skill_desc_Spark + skill_desc_SQL + 
+               skill_desc_Tableau + CA + NY + VA + TX + MA, method="class", data=df_model)
+
+printcp(fit) # display the results
+plotcp(fit) # visualize cross-validation results
+summary(fit) # detailed summary of splits
+
+# Plot Classification Tree
+plot(fit, uniform=TRUE,
+   main="Classification Tree for Salary")
+text(fit, use.n=TRUE, all=TRUE, cex=.5)
+
+# Classification (prediction salary from: top 3 skills, state, industry)
+
+```
+
+
+```{r tblcemployee}
+
+tblcompany<-as.data.frame(get_data('company'))
+
+tibble(tblcompany)
+
+```
+
+
+```{r tblcemployee}
+
+tblcemployee<-as.data.frame(get_data('company_employee'))
+
+tibble(tblcemployee)
+
+```
+
+
+```{r tblcindustry}
+
+tblcindustry<-as.data.frame(get_data('company_industry'))
+
+tibble(tblcindustry)
+
+```
+
+
+```{r tblcrevenue}
+
+tblcrevenue<-as.data.frame(get_data('company_revenue'))
+
+tibble(tblcrevenue)
+
+data(categories)
+categories %>% filter(name == "Machine Learning")
+```
+
+
+```{r tbljobmaster}
+
+tbljobmaster<-as.data.frame(get_data('job_master'))
+
+tibble(tbljobmaster)
+
+```
+
+
+```{r tbljobskills}
+
+tbljobskills<-as.data.frame(get_data('job_skills'))
+
+tibble(tbljobskills)
+
+```
+
+
+```{r tblsalary}
+
+tblsalary<-as.data.frame(get_data('salary'))
+
+tibble(tblsalary)
+
+```
+
+
+```{r tblskills}
+
+tblskills<-as.data.frame(get_data('skills'))
+
+tibble(tblskills)
+
+```
+
+
+```{r tblstate}
+
+tblstate<-as.data.frame(get_data('state'))
+
+tibble(tblstate)
+
+```
