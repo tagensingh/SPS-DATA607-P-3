@@ -68,7 +68,7 @@ data = data[data$No_of_Skills>0,]
 x = data$X
 strings = data$Skill
 count = c()
-x_new = c()
+X = c()
 skill_list = c()
 
 # create vector count
@@ -78,11 +78,11 @@ for (string in strings){
 
 #create skills dataframe
 for (i in seq(length(count))){
-  x_new = c(x_new,rep(x[i],count[i]))
+  X = c(X,rep(x[i],count[i]))
   skill_list = c(skill_list,clean_string(strings[i]))
 }
 
-skills = data.frame(x_new,skill_list)
+skills = data.frame(X,skill_list)
 head(skills)
 ```
 
@@ -119,10 +119,23 @@ skill_count = skills %>%
   arrange(desc(frequency))
   
 
-wordcloud(skill_count$skill_list,skill_count$frequency,min.freq = 1,max.words=200, random.order=FALSE, rot.per=0.35,            colors=brewer.pal(8, "Dark2"))
+wordcloud(skill_count$skill_list,skill_count$frequency,min.freq = 5,max.words=150, random.order=FALSE, rot.per=0.1,            colors=brewer.pal(8, "Dark2"))
 
 
 ```
 
+```{r}
+
+job_skills = merge(jobs,skills,on = 'X')
+
+ny = job_skills[job_skills["Location"] == "NY",]
+
+ny %>% 
+  group_by(skill_list)%>%
+  summarise(percent = n()/dim(skills)[1])%>%
+  arrange(desc(percent))%>%
+  head(10)%>%
+  ggplot(aes(reorder(skill_list,percent),percent))+geom_bar(stat = 'identity')+coord_flip()+labs(x = 'Skills',title = "Most Desired Data Science Skills Skills in NY")
+```
 
 
