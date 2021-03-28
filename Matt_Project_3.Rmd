@@ -28,7 +28,11 @@ library(gtrendsR)
 library(stats)
 library(DT)
 library(rpart)
+library(rpart.plot)
 library(fastDummies)
+library(randomForest)
+library(e1071)
+library(caret)
 ```
 
 
@@ -70,6 +74,7 @@ top_skills <- d607_p3_all_recs %>%
 
 
 ```{r google-trends}
+
 hl <-"en-US"
 time <- "2010-01-01 2021-03-20"
 geo <- "US"
@@ -85,6 +90,7 @@ java_trend <- gtrends(keyword = "Java", geo = geo, time = time, hl = hl)
 tableau_trend <- gtrends(keyword = "Tableau", geo = geo, time = time, hl = hl)
 datamining_trend <- gtrends(keyword = "Data Mining", geo = geo, time = time, hl = hl)
 hive_trend <- gtrends(keyword = "Hive", geo = geo, time = time, hl = hl)
+Sys.sleep(10)
 sas_trend <- gtrends(keyword = "SAS", geo = geo, time = time, hl = hl)
 bigtrend_trend <- gtrends(keyword = "Big Data", geo = geo, time = time, hl = hl)
 aws_trend <- gtrends(keyword = "AWS", geo = geo, time = time, hl = hl)
@@ -95,6 +101,7 @@ nlp_trend <- gtrends(keyword = "Natural Language Processing", geo = geo, time = 
 oracle_trend <- gtrends(keyword = "Oracle", geo = geo, time = time, hl = hl)
 datawarehouse_trend <- gtrends(keyword = "Data Warehouse", geo = geo, time = time, hl = hl)
 linux_trend <- gtrends(keyword = "Linux", geo = geo, time = time, hl = hl)
+Sys.sleep(10)
 ai_trend <- gtrends(keyword = "AI", geo = geo, time = time, hl = hl)
 micrsql_trend <- gtrends(keyword = "Microsoft SQL Server", geo = geo, time = time, hl = hl)
 tensorflow_trend <- gtrends(keyword = "TensorFlow", geo = geo, time = time, hl = hl)
@@ -102,26 +109,6 @@ kafka_trend <- gtrends(keyword = "Kafka", geo = geo, time = time, hl = hl)
 azure_trend <- gtrends(keyword = "Azure", geo = geo, time = time, hl = hl)
 
 ```
-
-
-```{r locations-and-related}
-
-# Interest by U.S. DMA
-ml_trend$interest_by_dma %>% drop_na(hits) %>% arrange(desc(hits))
-
-# Interest by City
-ml_trend$interest_by_city %>% drop_na(hits) %>% arrange(desc(hits))
-
-# Related topics
-ml_trend$related_topics 
-
-# Related queries
-ml_trend$related_queries
-
-```
-
-
-
 
 
 ```{r join-trends}
@@ -148,15 +135,14 @@ r_trend$interest_over_time$datawarehouse_hits = datawarehouse_trend$interest_ove
 
 # Join trend data for terms that peaked in interest
 bigtrend_trend$interest_over_time$tensorflow_hits = tensorflow_trend$interest_over_time$hits
+bigtrend_trend$interest_over_time$hadoop_hits = hadoop_trend$interest_over_time$hits
 
 ```
 
 
-
-
 ```{r rising}
 
-# Rising interest over time
+# Plot rising interest over time
 ggplot() +
   geom_line(data=python_trend$interest_over_time, aes(y= hits, x= date, colour="a"), size=1 ) +
   geom_line(data=python_trend$interest_over_time, aes(y= ml_hits, x= date, colour="b"), size=1) +
@@ -170,28 +156,24 @@ ggplot() +
 ```
 
 
-
 ```{r declining}
 
-# Declining interest over time
+# Plot declining interest over time
 ggplot() +
   geom_line(data=sql_trend$interest_over_time, aes(y=hits, x=date, color="a"), size=1) +
   geom_line(data=sql_trend$interest_over_time, aes(y=java_hits, x=date, color="b"), size=1) +
-  geom_line(data=sql_trend$interest_over_time, aes(y=hadoop_hits, x=date, color="c"), size=1) +
   geom_line(data=sql_trend$interest_over_time, aes(y=sas_hits, x=date, color="d"), size=1) +
   geom_line(data=sql_trend$interest_over_time, aes(y=oracle_hits, x=date, color="e"), size=1) +
   xlab("Date") + ylab("Interest over time") +
   scale_color_discrete(name = "Decreasing Interest Over Time", 
-                       labels = c("SQL", "Java", "Hadoop", "SAS", "Oracle"))
+                       labels = c("SQL", "Java", "SAS", "Oracle"))
 
 ```
 
 
-
-
 ```{r stable}
 
-# Stable interest over time
+# Plot stable interest over time
 ggplot() +
   geom_line(data=r_trend$interest_over_time, aes(y=hits, x=date, color="a"), size=1) +
   geom_line(data=r_trend$interest_over_time, aes(y=scala_hits, x=date, color="b"), size=1) +
@@ -205,161 +187,144 @@ ggplot() +
 ```
 
 
+```{r peaked}
 
-
-```{r stable}
-
-# Peaked interest over time
+# Plot peaked interest over time
 ggplot() +
   geom_line(data=bigtrend_trend$interest_over_time, aes(y=hits, x=date, color="a"), size=1) +
-  geom_line(data=bigtrend_trend$interest_over_time, aes(y=tensorflow_hits, x=date, color="b"), size=1) +
+  geom_line(data=bigtrend_trend$interest_over_time, aes(y=as.numeric(tensorflow_hits), 
+                                                        x=date, color="b"), size=1) +
+  geom_line(data=bigtrend_trend$interest_over_time, aes(y=hadoop_hits, x=date, color="c"), size=1) +
   xlab("Date") + ylab("Interest over time") +
-  scale_color_discrete(name = "Peak Popularity", labels = c("Big Data", "Tensorflow"))
+  scale_color_discrete(name = "Peak Popularity", labels = c("Big Data", "Tensorflow", "Hadoop"))
 
 ```
-
 
 
 ```{r prep-data-for-modeling}
 
-# Filter for only top skills
-top_skills$skill_desc[2:11]
+# Include skills with at least 100 observations
+skills_hundred_obs <- top_skills %>% filter(n >= 100)
+df_jobs_skills_hundred_obs <- d607_p3_all_recs %>% filter(skill_desc %in% skills_hundred_obs$skill_desc)
 
-df_jobs_top_skills <- d607_p3_all_recs %>% filter(skill_desc %in% top_skills$skill_desc[2:11])
+# Create dummy variables for skills with at least 100 observations
+df_jobs_skills_hundred_obs_dummies <- dummy_cols(df_jobs_skills_hundred_obs, 
+                                      select_columns = c("skill_desc"), remove_first_dummy = TRUE)
 
-df_jobs_top_skills_dummies <- dummy_cols(df_jobs_top_skills, select_columns = c("skill_desc"),
-                                 remove_first_dummy = TRUE)
+# Remove unneeded columns
+df_jobs_skills_hundred_obs_dummies <- df_jobs_skills_hundred_obs_dummies %>% 
+                                      select(-(c("job_title", "company", "no_of_emp", 
+                                         "revenue_range", "industry", 
+                                         "postal_code", "skill_id", "skill_desc")))
 
-df_salary_state <- df_jobs_top_skills_dummies %>% 
-                      distinct(job_id, .keep_all = TRUE) %>% 
-                      select(job_id, salary_range, postal_code)
+# Group by job_id and for each column use max value (0 or 1) as aggregate value
+df_jobs_skills_hundred_obs_dummies <- df_jobs_skills_hundred_obs_dummies %>% 
+                                                      group_by(job_id) %>% 
+                                                      summarise_each(list(max))
 
-df_salary_state_dummies <- df_salary_state %>% 
-                                  mutate(CA = ifelse(postal_code == 'CA' , 1, 0),
-	                                       NY = ifelse(postal_code == 'NY' , 1, 0),
-	                                       VA = ifelse(postal_code == 'VA' , 1, 0),
-	                                       TX = ifelse(postal_code == 'TX' , 1, 0),
-	                                       MA = ifelse(postal_code == 'MA' , 1, 0))
+# Find top locations by observation count
+top_locations <- d607_p3_all_recs %>% select(skill_id, postal_code) %>% 
+                                      group_by(postal_code) %>% 
+                                      summarise(n = n()) %>%
+                                      arrange(desc(n))
 
-df_salary_state_dummies <- df_salary_state_dummies %>% select(-(postal_code))
+# Include locations with at least 100 observations
+locations_hundred_obs <- top_locations %>% filter(n >= 100)
+df_jobs_locs_hundred_obs <- d607_p3_all_recs %>% 
+                                 filter(postal_code %in% locations_hundred_obs$postal_code)
 
-df_skills_dummies <- df_jobs_top_skills_dummies %>% 
-                              group_by(job_id) %>% 
-                              summarise(skill_desc_Hadoop = max(skill_desc_Hadoop),
-                                        skill_desc_Hive = max(skill_desc_Hive),
-                                        skill_desc_Java = max(skill_desc_Java),
-                                        skill_desc_MachineLearning = max(skill_desc_MachineLearning),
-                                        skill_desc_Python = max(skill_desc_Python),
-                                        skill_desc_R = max(skill_desc_R),
-                                        skill_desc_Spark = max(skill_desc_Spark),
-                                        skill_desc_SQL = max(skill_desc_SQL),
-                                        skill_desc_Tableau = max(skill_desc_Tableau))
+# Create dummy variables for locations with at least 100 observations
+df_jobs_locs_hundred_obs_dummies <- dummy_cols(df_jobs_locs_hundred_obs, 
+                                      select_columns = c("postal_code"), remove_first_dummy = TRUE)
 
-df_model <- df_skills_dummies %>% inner_join(df_salary_state_dummies)
+# Remove unneeded columns
+df_jobs_locs_hundred_obs_dummies <- df_jobs_locs_hundred_obs_dummies %>% 
+                                    select(-(c("job_title", "company", "no_of_emp", 
+                                         "salary_range", "revenue_range", "industry", 
+                                         "postal_code", "skill_id", "skill_desc")))
 
-```
+# Group by job_id and for each column use max value of one of the rows as aggregate value
+df_jobs_locs_hundred_obs_dummies <- df_jobs_locs_hundred_obs_dummies %>% 
+                                                      group_by(job_id) %>% 
+                                                      summarise_each(list(max))
 
+# Join skills and locations
+df_model <- df_jobs_skills_hundred_obs_dummies %>% inner_join(df_jobs_locs_hundred_obs_dummies)
 
-
-```{r modeling}
-
-# Fit model
-fit <- rpart(salary_range ~ skill_desc_Hadoop + skill_desc_Hive + skill_desc_Java + skill_desc_Python +
-               skill_desc_MachineLearning + skill_desc_R + skill_desc_Spark + skill_desc_SQL + 
-               skill_desc_Tableau + CA + NY + VA + TX + MA, method="class", data=df_model)
-
-printcp(fit) # display the results
-plotcp(fit) # visualize cross-validation results
-summary(fit) # detailed summary of splits
-
-# Plot Classification Tree
-plot(fit, uniform=TRUE,
-   main="Classification Tree for Salary")
-text(fit, use.n=TRUE, all=TRUE, cex=.5)
-
-# Classification (prediction salary from: top 3 skills, state, industry)
+# Rename problematic column names
+df_model <- df_model %>% rename(skill_desc_C = "skill_desc_C/C++",
+                                        skill_desc_C_Sharp = "skill_desc_C#",
+                                        skill_desc_CICD = "skill_desc_CI/CD",
+                                        skill_desc_TSSCIClearance = "skill_desc_TS/SCIClearance")
 
 ```
 
 
-```{r tblcemployee}
+```{r train-test-split}
 
-tblcompany<-as.data.frame(get_data('company'))
-
-tibble(tblcompany)
-
-```
-
-
-```{r tblcemployee}
-
-tblcemployee<-as.data.frame(get_data('company_employee'))
-
-tibble(tblcemployee)
+# Create train test split
+train <- df_model %>% dplyr::sample_frac(.75)
+test  <- dplyr::anti_join(df_model, train, by = 'job_id')
 
 ```
 
 
-```{r tblcindustry}
+```{r class-sizes}
 
-tblcindustry<-as.data.frame(get_data('company_industry'))
+# Reorder target variable levels
+positions <- c("<80000", "80000-99999", "100000-119999", "120000-139999", "140000-159999", ">160000")
+df_model$salary_range <- factor(df_model$salary_range, levels=positions)
 
-tibble(tblcindustry)
-
-```
-
-
-```{r tblcrevenue}
-
-tblcrevenue<-as.data.frame(get_data('company_revenue'))
-
-tibble(tblcrevenue)
-
-data(categories)
-categories %>% filter(name == "Machine Learning")
-```
-
-
-```{r tbljobmaster}
-
-tbljobmaster<-as.data.frame(get_data('job_master'))
-
-tibble(tbljobmaster)
+# To get an idea of minimum accuracy
+# Review the distribution / class sizes of the target variable by percentage
+ggplot(df_model, aes(x = salary_range)) +  
+  geom_bar(aes(y = (..count..)/sum(..count..)), fill="turquoise3") + 
+  ggtitle("Salary Range by Percentage") + xlab("Percentage") + ylab("Salary Range")
 
 ```
 
 
-```{r tbljobskills}
+```{r classification-tree}
 
-tbljobskills<-as.data.frame(get_data('job_skills'))
+# Fit model training data
+model_ct <- rpart(salary_range ~ . - job_id, method="class", data=train)
 
-tibble(tbljobskills)
+# Plot classification tree
+rpart.plot(model_ct, main="Classification Tree for Salary Range")
 
-```
+# Make predictions on test data
+preds_ct <- predict(model_ct, as.data.frame(test), type = "class")
 
-
-```{r tblsalary}
-
-tblsalary<-as.data.frame(get_data('salary'))
-
-tibble(tblsalary)
-
-```
-
-
-```{r tblskills}
-
-tblskills<-as.data.frame(get_data('skills'))
-
-tibble(tblskills)
+# Review Confusion Matrix
+confusionMatrix(preds_ct, as.factor(test$salary_range))
 
 ```
 
 
-```{r tblstate}
+```{r random-forest}
 
-tblstate<-as.data.frame(get_data('state'))
+# Fit Top Skills and Locations Random Forest Model
+model_rf <- randomForest(as.factor(salary_range) ~ . - job_id, method="class",  data=train)
 
-tibble(tblstate)
+# Make predictions on test data
+preds_rf <- predict(model_rf, test)
+
+# Review Confusion Matrix
+confusionMatrix(preds_rf, as.factor(test$salary_range))
 
 ```
+
+
+```{r naive-bayes}
+
+# Fit Naive Bayes model
+model_nb <- naiveBayes(as.factor(salary_range)  ~ . - job_id, data = train)
+
+# Make predictions on test data
+preds_nb <- predict(model_nb, as.data.frame(test))
+
+# Review Confusion Matrix
+confusionMatrix(preds_nb, as.factor(test$salary_range))
+
+```
+
