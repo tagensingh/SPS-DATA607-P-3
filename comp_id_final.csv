@@ -1,0 +1,2233 @@
+company_id,Company
+1,none
+2,[24]7
+3,14 West
+4,1st Solution USA
+5,23andMe
+6,2DA Analytics
+7,2K Games
+8,2U
+9,3coast
+10,3M
+11,3Q Digital
+12,7-Eleven
+13,7Park Data
+14,8-Koi
+15,8X8 INC.
+16,A Could Guru
+17,A. H. Belo Corporation
+18,A+E Networks
+19,Aaptiv
+20,Abacus Data Systems
+21,Abbott Laboratories
+22,AbbVie
+23,Abilene Christian University
+24,Abiomed
+25,AbleVets LLC
+26,ABSc
+27,Academia.edu
+28,Academy for Urban School Leadership
+29,Accenture
+30,"AccessCNY, INC"
+31,"Accident Fund Holdings, Inc."
+32,ACCION
+33,"Accion in Arizona, Colorado, Nevada, New Mexico and Texas"
+34,Accolite Software India
+35,"Accolite, Inc."
+36,"Accountants One, Inc"
+37,Ace Technologies
+38,Achievement Network (ANet)
+39,ACI Worldwide
+40,Aclara
+41,ACN
+42,Acquisition Life Cycle Management
+43,ACS
+44,"ACT, Inc."
+45,ActiveCampaign
+46,"Acuity, Inc."
+47,Acumen Solutions
+48,Acustream
+49,Adaptive Management
+50,Adobe
+51,ADT Corporation
+52,ADT Security Services
+53,Advance Auto Parts
+54,Advance Financial
+55,Advanced ICU Care
+56,"Advanced Micro Devices, Inc."
+57,Advanced Technology Group Inc
+58,Advantage SCI
+59,Advantage Solutions
+60,Adventist Health System
+61,AECOM
+62,Aegon
+63,Aera Technology
+64,Aetna
+65,AF Group
+66,Affirm
+67,AG Grace Inc
+68,Agent IQ
+69,Agilent
+70,AHMC Healthcare Inc
+71,AIDS Foundation of Chicago
+72,AIG
+73,AirPR
+74,Akili Interactive
+75,"Akima, LLC"
+76,AKRAYA INC.
+77,Alaka`ina Foundation Family of Companies
+78,Alameda Health Consortium/Community Health Center Network
+79,Alarm.com
+80,Albemarle Corporation
+81,ALC
+82,"Aledade, Inc."
+83,Alegeus Technologies
+84,Alere
+85,Alibaba
+86,Alion Science and Technology
+87,Allegheny Health Network
+88,"Allegro MicroSystems, LLC"
+89,Allergan
+90,Alliance Data - Retail
+91,Alliance Health Professionals
+92,AllianceData
+93,Alliant Credit Union
+94,alliantgroup
+95,All-In Analytics
+96,Alloy
+97,Allstate
+98,Alltran
+99,Ally Financial
+100,Alnylam
+101,Alqimi
+102,Altair Engineering
+103,AltaMed
+104,Altamira Technologies Corporation
+105,AltaSource Group
+106,"Alteryx, Inc."
+107,Altice USA
+108,"Amches, Inc."
+109,Amdocs
+110,"American Axle & Manufacturing, Inc."
+111,American Chemical Society
+112,American Express
+113,American Family Insurance
+114,American Institutes for Research
+115,American Merchandising Specialists
+116,"American Modern Insurance Group, Inc."
+117,American Specialty Health
+118,AmeriCorps
+119,AmeriHealth Caritas
+120,AmeriSourceBergen
+121,Ameritas
+122,Amgen
+123,Amica Insurance Company
+124,Amne
+125,"Amplify Education, Inc."
+126,Amplitude
+127,AmTrust Financial Services
+128,Anadarko Petroleum Corporation
+129,AnalogFolk
+130,Analysis Group
+131,Analytic Recruiting
+132,"AnaVation, LLC"
+133,ANB Bank
+134,AncestryDNA
+135,Anchorage Consultants LLC
+136,Andersen Corporation
+137,Anheuser-Busch
+138,Animoto
+139,Annalect
+140,Anne Arundel Medical Center
+141,AnswerRocket
+142,ANTHEM MARKETING
+143,"Anthem, Inc."
+144,Apeel Sciences
+145,Apkudo
+146,"Apogee Integration, LLC"
+147,Appalachian Regional Healthcare
+148,AppDynamics
+149,AppFolio
+150,Applause
+151,Applied Materials Inc.
+152,Applied Memetics LLC
+153,Applied Systems Inc.
+154,Applied Thought
+155,AppNexus
+156,Apptentive
+157,AppZen
+158,Aptiv
+159,AQR
+160,"Arable Labs, Inc."
+161,Aramark
+162,Arbella Insurance Group
+163,Arc Aspicio
+164,ARC Solutions USA
+165,Arcadis
+166,Arch Capital Group Ltd.
+167,Archer Daniels Midland Company
+168,Arconic
+169,Areté Associates
+170,Argonne National Laboratory
+171,Arkansas Blue Cross and Blue Shield
+172,Arkatechture
+173,Armor
+174,Aroghia Group
+175,Arrayo
+176,"Arrow Electronics, Inc."
+177,Arrowpoint Corporation
+178,Arthrex
+179,Arthur Lawrence
+180,Aruba Networks
+181,"Ascena Retail Group, Inc."
+182,Ascend Performance Materials
+183,Ascensia Diabetes Care
+184,Ascension Healthcare
+185,Ascensus
+186,Ascent Services Group
+187,Asembia LLC
+188,Asendia Management SAS
+189,ASET Partners
+190,Asics Digital
+191,ASML
+192,Aspen Technology
+193,Association of Universities for Research in Astronomy
+194,Assurant
+195,Assured Consulting Solutions
+196,AssuredPartners
+197,Astor Services For Children & Families
+198,Astronics
+199,Asurion
+200,AT&T
+201,athenahealth
+202,aThingz
+203,Atlantic Health System
+204,Atlassian
+205,ATN International
+206,Atos
+207,Audi Canada
+208,Audley Travel
+209,Augmedix Inc.
+210,Aultman Health Foundation
+211,Aultman Hospital
+212,Aunalytics
+213,AUSL Chicago
+214,Auth0
+215,AUTHENTIX INC
+216,Auto Club Group
+217,Autodesk
+218,Auto-Owners Insurance
+219,"Availity, LLC."
+220,AvalonBay Communities
+221,Avanade
+222,Averity
+223,AVID CENTER STAFF
+224,Avkare Inc
+225,Avvo
+226,AXA
+227,AXA General Insurance
+228,Axelon Services Corporation
+229,Axiologic Solutions
+230,Axis Group
+231,AXIS Insurance
+232,Axius Technologies
+233,Axos Bank
+234,b.well
+235,BAE Systems
+236,BAE Systems Applied Intelligence
+237,BAIN & COMPANY
+238,Ball Corporation
+239,"Baltimore Medical System, Inc."
+240,Balyasny
+241,Bangor Savings Bank
+242,Bank of America Merchant Services
+243,Bank of the West
+244,Banner Health
+245,Baptist Health South Florida
+246,Barings
+247,Barri Financial Group
+248,Barrick Gold Corporation
+249,Bartech Group
+250,BASF
+251,Bassett Healthcare
+252,Battelle
+253,Baylor Scott & White Health
+254,Baystate Health
+255,BB&T
+256,BBYO
+257,BBYO -
+258,BCD Travel
+259,BCG Digital Ventures
+260,Beachbody
+261,Beacon Health System
+262,Bealls Inc
+263,Beaumont Health
+264,"Beaver Dam Community Hospitals, Inc."
+265,Becton Dickinson
+266,Benchmark Education Company
+267,"Benson Hill Biosystems, Inc"
+268,Berico Technologies
+269,Berkadia Commercial Mortgage
+270,Bertelsmann
+271,Betterment LLC
+272,Beyond Limits
+273,Beyondsoft Consulting
+274,BGC Partners
+275,BHP Engineering & Construction
+276,BI Worldwide
+277,Big Fish Games
+278,BigCommerce
+279,Bigfoot Biomedical
+280,Bill.com
+281,Billings Clinic
+282,Bind Benefits
+283,Bio-Rad
+284,"BioTelemetry, Inc."
+285,Bird Rides Inc.
+286,Bitcoin
+287,BitTorrent Inc.
+288,Bixal
+289,"BJ's Wholesale Club, Inc."
+290,Blackbaud
+291,BlackLine
+292,BlackRock
+293,Blade
+294,Blizzard Entertainment
+295,Bloomberg
+296,Blue Apron
+297,Blue Chip Talent
+298,Blue Cross Blue Shield of Arizona
+299,Blue Cross Blue Shield of Arizona Advantage
+300,Blue Cross Blue Shield of Michigan
+301,Blue Nile
+302,Blue Origin
+303,Blue Owl
+304,Blue Shield of California
+305,bluebird bio
+306,Bluecore Inc.
+307,BLUECUBE Information Technology
+308,"BLUEHAWK, LLC"
+309,BlueLabs Analytics
+310,BlueLinx Corporation
+311,Blume Global
+312,"Blytheco, LLC"
+313,BMO Financial Group
+314,BMW North America
+315,BNP Paribas
+316,BNY Mellon
+317,Boeing
+318,Boeing Intelligence & Analytics
+319,BOK Financial
+320,Bold
+321,Boll & Branch
+322,BookBub
+323,Booz Allen Hamilton
+324,BorderX Lab Inc
+325,Bosch Group
+326,Bose
+327,Boss Fight Entertainment
+328,Boston Bruins
+329,Boston Children's Hospital
+330,Boston Medical Center
+331,Bowery Farming
+332,Boxy Charm
+333,BoxyCharm
+334,Boyd Caton Group (bcg)
+335,Boyne Resorts
+336,Brad's Deals
+337,Bright Cellars
+338,Brighthouse Financial
+339,Brightidea
+340,Brightree
+341,Brillio
+342,Bristol-Myers Squibb
+343,Brivo Systems
+344,Broad Institute
+345,Broadridge
+346,"Brooks Sports, Inc"
+347,Brown & Brown Insurance
+348,BRS
+349,Bryant & Stratton College
+350,Buchanan & Edwards
+351,Burlington Stores
+352,"Butterball, LLC"
+353,Butterfly Network
+354,Buxton
+355,"C&A Industries, Inc"
+356,"C.H. Robinson Worldwide, Inc."
+357,C3
+358,C5T Corporation
+359,Cable & Wireless Communications Inc
+360,cableyou
+361,CACI
+362,Caesars Entertainment
+363,Calero Software
+364,Calico
+365,California State University
+366,Calix
+367,"CallMiner, Inc"
+368,CALNET INC.
+369,Cambia Health
+370,Cambria
+371,Camp4 Therapeutics Corporation
+372,Cancer Treatment Centers of America
+373,Candid Co.
+374,Candid Partners
+375,Canton-Potsdam Hospital
+376,Canvas Technology
+377,Capax Global LLC
+378,CAPCO
+379,Capgemini
+380,Capgemini Government Solutions
+381,Capital Group Companies
+382,Capital Impact Partners
+383,Capital One
+384,CapTech Consulting
+385,Carbon Black
+386,Carbonite
+387,Cardinal Health
+388,Cardinal Solutions Group
+389,Care New England Health System
+390,Care.org
+391,CareSource
+392,Caris Life Sciences
+393,Carlisle & Company
+394,CarMax
+395,Carolinas HealthCare System
+396,Carrot Inc.
+397,Carter Bank and Trust
+398,Caserta
+399,Casey's General Stores
+400,Castle Global
+401,Castleton Commodities International
+402,Castlight Health
+403,Catalina Marketing
+404,Catalyst Repository Systems
+405,Catasys
+406,Catholic Health Initiatives
+407,CBRE
+408,CCC Information Services Inc.
+409,CDW
+410,Celgene
+411,"Cell Signaling Technology, Inc"
+412,Celmatix
+413,Celtra Inc.
+414,CenCal Health
+415,Centene
+416,Central California Alliance for Health
+417,Central Health
+418,Central Intelligence Agency
+419,Central Maine Medical Center
+420,Central Texas Food Bank
+421,Centro
+422,Centura Health
+423,CenturyLink
+424,Cerebri AI
+425,Certara
+426,CGG
+427,Change Healthcare
+428,Change.org
+429,Chapman Cubine Adams & Hussey
+430,Charles Schwab
+431,Chatmeter
+432,Chegg
+433,Chenega Corporation
+434,CHEP
+435,Chicago Public Schools
+436,Chicago Trading Company (CTC)
+437,"Child Care Resource Center – Chatsworth, CA"
+438,Children's Hospital & Research Center Oakland
+439,Children's Hospital of Wisconsin
+440,Children's Medical Center
+441,Chime
+442,CHOC Children's Hospital
+443,Choice Hotels
+444,ChowNow
+445,Christiana Care Health Systems
+446,Church Pension Group
+447,Churchill Mortgage Corp
+448,CIBC
+449,Cigna
+450,CIITS
+451,Cimpress
+452,Ciox Health
+453,CircleUp
+454,Cisco Meraki
+455,Cisco Systems
+456,Citadel Securities
+457,Citi
+458,citius tech
+459,Citizens Energy Group
+460,City National Bank
+461,City of Minneapolis
+462,City of Seattle
+463,City of Tucson
+464,Cityblock Health
+465,Civis Analytics
+466,Civitas Learning
+467,Clara
+468,Clarabridge
+469,Claritas
+470,Clarity Insights
+471,Clarity USA
+472,Clarivate Analytics
+473,Clarkston Consulting
+474,ClassLink Inc
+475,Clayton Homes
+476,Clear Capital
+477,Clearpoint
+478,ClearView Healthcare Partners
+479,Clearwater Paper
+480,Clemson University
+481,Cleveland Cavaliers
+482,ClimaCell
+483,CliniWorks
+484,Clockwork Solutions
+485,Cloudburst Consulting Group Inc
+486,"CMI Media and Compas, Inc."
+487,Coda Search
+488,Code Pilot
+489,Coffee & Bagel Brands
+490,Coffee Meets Bagel
+491,Cogitativo
+492,Cognitive Scale
+493,Cognizant
+494,"Cognosante, LLC"
+495,Cogo Labs
+496,Coherent Germany
+497,"Coherent, Inc."
+498,Coinbase
+499,Colgate-Palmolive
+500,Collective Health
+501,College Raptor
+502,Colliers International
+503,"Colony Brands, Inc."
+504,Colorado Community Managed Care Network
+505,Columbia Sportswear
+506,Columbia University
+507,Comcast
+508,Commerce Bank
+509,Common Securitization Solutions
+510,Commonwealth Care Alliance
+511,Commonwealth of Massachusetts
+512,Commonwealth Of Virginia
+513,Community Behavioral Health
+514,Community Health Network
+515,Community Medical Centers
+516,Community Medical Centers Inc
+517,Community Reach Center
+518,Compass Group USA
+519,Comprehensive Healthcare
+520,CompuCom
+521,CompuGain
+522,Comrise
+523,comScore
+524,Conagra Brands
+525,ConAgra Foods
+526,Concerted Care Group
+527,Concur
+528,Conductor
+529,Conduent
+530,ConnectYourCare
+531,Consumers Energy
+532,CONTINUUM
+533,Conversant Media
+534,Convey
+535,"Convey, Inc."
+536,Convoy
+537,Cook Medical
+538,CooperVision
+539,Copper
+540,Corcentric
+541,Core10
+542,CoreCompete
+543,CORKCICLE.
+544,Cormac Corporation
+545,Corning
+546,CORTEK
+547,Coso IT
+548,Cota
+549,Coty Inc.
+550,Country Financial
+551,County of San Mateo
+552,Coupa Software
+553,Coursera
+554,Courtney Raymond Consultants
+555,Covance
+556,Coverent
+557,Coyote Logistics
+558,CRB Workforce LLC
+559,Creative Alignments
+560,Creative Arts Agency (CAA)
+561,Credit Acceptance
+562,Credit Karma
+563,Credit Sesame
+564,Credit Suisse
+565,Cresco Labs
+566,Crestron
+567,Crestron Electronics
+568,CRGT Inc.
+569,Cricket Health
+570,Cricut
+571,Criteo
+572,Criterion Systems
+573,Crohn's & Colitis Foundation of America
+574,Cross River Bank
+575,"CrossFit, Inc."
+576,Crossover
+577,Crossover Health
+578,Crowdstrike
+579,Crowe
+580,Crown Castle
+581,Crozer Keystone Health System
+582,Crystal Dynamics
+583,CSRA
+584,"CSSI, Inc."
+585,CTG
+586,Cubic Corporation
+587,Culinary Health Center
+588,Cummins Inc.
+589,"Cummins Power Systems, LLC."
+590,Curbside
+591,Curriculum Associates
+592,Curve IT Consulting
+593,Custoria
+594,Cyberonics
+595,Cyberspace Solutions
+596,"Cydecor, Inc."
+597,Cyient
+598,Cymer
+599,D&K Engineering
+600,Daley and Associates
+601,Dana-Farber Cancer Institute
+602,Darwin Recruitment
+603,Dassault Falcon Jet
+604,DATA WORKS
+605,Datadog
+606,DataLab USA
+607,DataRobot
+608,Daugherty Business Solutions
+609,David Weekley Homes
+610,Day Zero Diagnostics
+611,DCS Corp
+612,ddms
+613,"DeepCurrent Technologies, Inc."
+614,DEG
+615,Delaware North
+616,Dell
+617,Deloitte
+618,Delta Dental of Minnesota
+619,Denodo
+620,Denodo Technologies
+621,Dentsu Aegis Networks
+622,Department of Veterans Affairs
+623,"Dev Technology Group, Inc."
+624,Devoted Health
+625,devwrx
+626,Dewpoint
+627,Dexcom
+628,Dexperts
+629,DHL
+630,"Dialpad, Inc."
+631,Dice
+632,Dick's Sporting Goods
+633,"Digital Management, LLC"
+634,Digital Promise
+635,DigitasLBi
+636,Dime Community Bank
+637,Diné Development Corporation
+638,Direct Resources Group
+639,Directly
+640,Discover Financial Services
+641,"Discovery Communications, LLC"
+642,DISH
+643,Disney
+644,Diverse Lynx
+645,DJO
+646,DNAnexus
+647,Dollar Shave Club
+648,Domino's
+649,"Domo, Inc."
+650,Donnelley Financial Solutions
+651,DoorDash
+652,Doosan Bobcat
+653,Dot818
+654,Dotdash
+655,doTERRA International
+656,DoubleDown Interactive LLC
+657,Dow Jones
+658,Doximity
+659,drawbridge
+660,Drillinginfo
+661,Driven Brands
+662,Dropbox
+663,DRW
+664,DRW Trading Group
+665,Drybar
+666,DSD Partners Inc
+667,DTCC
+668,Duke Energy
+669,Duke University and Duke University Health System
+670,Dun & Bradstreet
+671,DuPont
+672,DXC
+673,Dynetics
+674,Dyson
+675,E*TRADE FINANCIAL
+676,Eagle Ray Inc
+677,EagleView Technologies
+678,Early Warning Services
+679,East Daley Capital Advisors
+680,East West Bank
+681,Eastman Chemical Company
+682,EasyPost
+683,Eaton
+684,Eaton Vance
+685,eBay Inc.
+686,EBSCO Industries Inc
+687,Ecolab
+688,ECRI Institute
+689,ECS Federal LLC
+690,Edelman
+691,Edison Energy
+692,"Edison Software, Inc."
+693,EducationDynamics
+694,Edward-Elmhurst Health
+695,Edwards Lifesciences
+696,"eHire, LLC"
+697,Einstein Healthcare Network
+698,Elder Research Inc
+699,Electronic Arts
+700,Elev8 Hire Solutions
+701,Eli Lilly
+702,elicit
+703,Elite SEM
+704,Ellie Mae
+705,Ellis Medicine
+706,ELLKAY LLC
+707,Ely-Bloomenson Community Hospital
+708,"EMA, Inc."
+709,Emailage
+710,EmblemHealth
+711,EMD
+712,Emerson Hospital
+713,EMIDS
+714,Emmis Communications
+715,Emory Healthcare
+716,Emory University
+717,Enable Midstream
+718,Encompass Community Services
+719,Endurance International Group
+720,Energy Sense Finance
+721,EnerNOC
+722,Engage Partners
+723,Engie
+724,Engility
+725,Enlighted
+726,Ensign Services
+727,Entergy Corporation
+728,Envisagegroup
+729,Envision Healthcare
+730,enVista
+731,EPAM Systems
+732,Epic Care
+733,EPMA
+734,Epsilon
+735,eQHealth Solutions
+736,Equifax
+737,EquiLend
+738,Equityzen
+739,Ericsson
+740,ERM Group
+741,ESAC Inc
+742,eSpark
+743,Esri
+744,Essence
+745,Estee Lauder
+746,Esurance
+747,Etsy
+748,Evaya Data Systems
+749,Eventbrite
+750,Everlane
+751,Everything But The House (EBTH)
+752,Evolent Health
+753,Evonik
+754,Exabeam
+755,Exact Sciences
+756,Exact Sciences Corporation
+757,ExcelaCom
+758,EXL
+759,Experian
+760,Experis
+761,Express Scripts
+762,"ExtraHop Networks, Inc."
+763,ExxonMobil
+764,EY
+765,EyeView
+766,FabFitFun
+767,Fabick Cat
+768,Facebook
+769,"Facing History and Ourselves, Inc"
+770,Fair
+771,Faire
+772,Falls Lake Insurance Companies
+773,Fanatics Inc.
+774,Fannie Mae
+775,"Faraday Future, Inc."
+776,Farfetch
+777,Farm Bureau Insurance of Michigan
+778,Farmers Fridge
+779,Farmers Insurance Group
+780,FARO Technologies
+781,"Federal Management Systems, Inc."
+782,Federal Reserve Bank of Dallas
+783,Federal Reserve Bank of New York
+784,Federal Reserve Bank of St. Louis
+785,FedEx
+786,Feedzai
+787,Fender
+788,Fiat Chrysler Automobiles
+789,FICO
+790,Fidelis Care
+791,Fidelity Investments
+792,Fidelity National Financial
+793,Fifth Third Bank
+794,Figure
+795,FinLocker
+796,Finra
+797,FireEye
+798,First American Corporation
+799,First Horizon
+800,First National Bank of America
+801,First National Bank of Omaha
+802,"First National of Nebraska, Inc."
+803,First Orion
+804,First Republic Bank
+805,First San Francisco Partners
+806,First Tech Federal Credit Union
+807,FirstCare Health Plans
+808,FIS
+809,Fiserv
+810,Fitch Group
+811,Flagship Pioneering
+812,Flair IT Solutions
+813,FleetPride
+814,Flight Centre
+815,Florida Blue
+816,Florida Hospital
+817,Florida Polytechnic University
+818,Fluid Intelligence
+819,FM Global
+820,Foot Locker
+821,Fora Financial LLC
+822,Forcepoint
+823,Ford Motor Company
+824,ForeFlight
+825,Foreground Security
+826,Formation
+827,Formativ Health
+828,Fortive
+829,Fossil Group
+830,"Foundation Medicine, Inc."
+831,FourKites
+832,FourthWall Media
+833,Foxconn
+834,FoxNext Games
+835,FPM Technologies
+836,Fragomen
+837,Franciscan Health
+838,Franklin Templeton Investments
+839,Fred Hutchinson Cancer Research Center
+840,Freddie Mac
+841,Fred's
+842,Freedom Financial Network
+843,Freedom Forever
+844,Fremont Bank
+845,Fresenius Medical Care
+846,Frogdata
+847,Fruition Partners
+848,FuelX
+849,Fullscreen
+850,Fullscreen Media
+851,Fund for Public Health in New York City
+852,Funding Circle US
+853,Galaxy Systems
+854,Gallagher
+855,Gallup
+856,Galvanize
+857,Gap Inc.
+858,Garmin
+859,"Gartner, Inc."
+860,Gayathri's Sandbox
+861,Gaylord Specialty Healthcare
+862,"GCC Technologies, LLC"
+863,GE Careers
+864,GEHA
+865,"GenapSys, Inc."
+866,Genedata
+867,Genentech
+868,General Dentistry 4 Kids
+869,General Dynamics Information Technology
+870,General Dynamics Mission Systems
+871,General Mills
+872,General Motors
+873,Genmab
+874,Genuine Parts Company
+875,Genworth
+876,GeoDigital
+877,George Mason University
+878,Georgia Military College
+879,Geotab
+880,Germania Insurance
+881,Getty Images
+882,Giant Oak
+883,Gila River Health Care
+884,Ginger.io
+885,GlassDoor
+886,Glassview Media
+887,GlaxoSmithKline
+888,"GlobalLogic, Inc."
+889,Globant
+890,Globoforce Limited
+891,Glooko
+892,Glu Mobile
+893,GM Financial
+894,Goby
+895,GOCOOL
+896,GoDaddy
+897,Goldman Sachs
+898,GoodData Corporation
+899,GoodRx
+900,"Goodwill Industries International, Inc. (GII)"
+901,Goodwin Recruiting
+902,Goodyear
+903,Google
+904,GoPro
+905,goPuff
+906,Gradient.io
+907,Grail Insights
+908,Grand Rounds
+909,Grant Thornton
+910,Graphic Products
+911,Gray Matter Systems
+912,GrayMatter
+913,Great Bay Staffing Group
+914,Great Wolf Lodge
+915,Greater Delaware Valley
+916,Green Dot Corporation
+917,"Greene, Tweed & Co."
+918,Grid Dynamics
+919,GroupM
+920,Groupon
+921,Grubhub
+922,Grundfos
+923,Grundfos Pumps Corporation
+924,Guardant Health
+925,Guardian Industries
+926,Guidehouse
+927,"Guidewire Software, Inc."
+928,GumGum
+929,H2M Group
+930,Hackensack Meridian Health
+931,Hagerty
+932,Halfaker and Associates
+933,Hallmark
+934,Hamilton Lane
+935,Harbor Wholesale Foods
+936,Harley-Davidson
+937,Harnham
+938,Harry's
+939,Harvard Business Publishing
+940,Harvard Pilgrim Health Care
+941,Harvard University
+942,Hasbro Inc.
+943,HatchWorks Technologies
+944,HAVI Logistics
+945,Hawaii Medical Service Association
+946,Hawaiian Airlines
+947,HBM Holdings
+948,HCSC
+949,HD Vest
+950,Healdsburg District Hospital
+951,Health Care District of Palm Beach County
+952,Health Catalyst
+953,Health Dialog
+954,Health First
+955,"Health One Alliance, LLC"
+956,Health Team Advantage
+957,Healthfirst
+958,HealthGrades
+959,Healthline Media
+960,Healthtronics
+961,Hearsay Social
+962,HeartFlow
+963,Heartland Business Systems
+964,"Heartland Dental, LLC"
+965,Hearts and Science
+966,HelloFresh
+967,HelloSign
+968,HelloWorld
+969,Helpshift
+970,Henry Schein
+971,HERE Technologies
+972,Hertz
+973,Hewlett Packard Enterprise
+974,HHB Systems
+975,High Alpha
+976,Highmark Health
+977,Hilcorp Energy Company
+978,Hill-Rom
+979,Hilton
+980,Hinge Health
+981,hiretual.com
+982,Hiscox Ltd
+983,Hitachi
+984,Hitachi Vantara
+985,"Hitech Assets, LLC."
+986,HNI Allsteel
+987,HNI Corporation
+988,Holleran Consulting
+989,HOMER
+990,Honda Research Institute USA
+991,Honeywell
+992,Hook & Loop Creative
+993,HopJump
+994,Horizon Health Services
+995,Hospital for Special Surgery
+996,HotelTonight
+997,HotSchedules
+998,HouseCall Pro
+999,Housing Authority
+1000,Housing Works
+1001,Houston Methodist
+1002,Houzz
+1003,HP
+1004,"HR, Legal, & Administration"
+1005,Huawei
+1006,Hudson's Bay
+1007,Hulu
+1008,Humana
+1009,"HumanTouch, LLC"
+1010,Huntington Bank
+1011,Huobi
+1012,HX5
+1013,Hydromax USA
+1014,Hylink Group
+1015,HyperspaceVentures
+1016,"Hy-Vee, Inc."
+1017,IBM
+1018,ICR
+1019,iD Tech
+1020,"Ideal Concepts, Inc."
+1021,IDEO
+1022,IDEXX
+1023,Idexx Laboratories
+1024,IDT Corporation
+1025,IEEE GlobalSpec
+1026,"iHeartMedia, Inc."
+1027,iHerb
+1028,IHS
+1029,IHS Markit
+1030,Illumina
+1031,Illumination Works
+1032,Imerys
+1033,Immuta
+1034,"IMO - Intelligent Medical Objects, Inc."
+1035,"Impact Makers, Inc."
+1036,Impetus Technologies
+1037,Improbable
+1038,IMTAS
+1039,Inabia Solutions and Consulting
+1040,Indiana University
+1041,InfoArmor Inc
+1042,Infoblox
+1043,Inframark
+1044,Infront Sports & Media Group
+1045,Ingersoll Rand
+1046,Ingram Content Group
+1047,Ingram Micro
+1048,Inland Empire Health Plan
+1049,InnovaSystems International
+1050,Innove LLC
+1051,Inovalon
+1052,"InsideSales.com, Inc."
+1053,INSIGHT ENGINES
+1054,Institute for Health Metrics and Evaluation - Faculty
+1055,Intalere Inc
+1056,Integral Ad Science
+1057,"Integral Consulting Services, Inc."
+1058,"Integrated Management Resources, LLC"
+1059,Integrity Applications Incorporated
+1060,Intel
+1061,Intelligent Automation
+1062,Intelligent Waves Llc
+1063,Intelliswift Software Inc
+1064,Interactive Brokers
+1065,Intercontinental Exchange
+1066,Internet Brands
+1067,Intrexon Corporation.
+1068,IntroPro
+1069,Intuit
+1070,Intuitive Surgical
+1071,Invesco
+1072,"Invictus International Consulting, LLC"
+1073,Invisibly
+1074,InVision Studio
+1075,IPG Mediabrands
+1076,IPRO
+1077,Ipsos North America
+1078,ipsy
+1079,IQ Workforce
+1080,IQVIA
+1081,iRobot Corporation
+1082,ISE Data Systems
+1083,"iSpot.tv, Inc."
+1084,IT Concepts Inc.
+1085,ITAGroup
+1086,ITT Corporation
+1087,IXIS
+1088,"J. Crew Group, Inc."
+1089,J.D. Power
+1090,Jackson Dawson
+1091,Jacobs
+1092,Jamul Casino
+1093,Janus Research Group
+1094,JB HUNT
+1095,JBCconnect
+1096,JD.com
+1097,Jebbit
+1098,Jellyfish
+1099,Jellyfish UK
+1100,Jet.com
+1101,Jetblack
+1102,JetBlue Airways Corporation
+1103,Jewelers Mutual Insurance Company
+1104,JFrog
+1105,JLL
+1106,JM GROUP
+1107,Jobspring Partners
+1108,John Clements
+1109,John Deere
+1110,Johns Hopkins
+1111,Johns Hopkins Health System
+1112,Johns Hopkins University
+1113,Johns Manville
+1114,Johnson & Johnson Family of Companies
+1115,Johnson Matthey
+1116,JPMorgan Chase
+1117,JT4
+1118,jump ramp
+1119,JustAnswer
+1120,JUUL Labs
+1121,Juvo
+1122,K12
+1123,Kabam
+1124,Kaiser Permanente
+1125,Kaizen
+1126,Kaleido Biosciences
+1127,Kaleidoscope
+1128,Kantar Careers
+1129,Kaplan
+1130,Kaplan Test Prep
+1131,"KAR Auction Services, Inc."
+1132,"Karsun Solutions, LLC"
+1133,KAYAK
+1134,KBRWyle
+1135,Keck Medical Center of USC
+1136,Keep Truckin
+1137,KeepSafe
+1138,Kelvin
+1139,Kemper Corporation
+1140,Kennametal
+1141,KeyBank
+1142,KEYPR
+1143,Keysight Technologies
+1144,KEYW Corporation
+1145,KGPCo
+1146,Kinetica DB
+1147,King County Housing Authority
+1148,King.com
+1149,KingsIsle Entertainment
+1150,Kinsa Inc.
+1151,Klaviyo
+1152,KMM Technologies
+1153,Knorr-Bremse North America
+1154,Knowledge Facilitation Group
+1155,Koddi
+1156,Kogentix
+1157,Kohler Co.
+1158,Kongregate
+1159,KPMG LLP
+1160,Kraken
+1161,Kroger
+1162,ktMINE
+1163,L Brands
+1164,L&T Technology Services Ltd.
+1165,L. L. Bean
+1166,L.A. Care Health Plan
+1167,L3 Technologies
+1168,Lab126
+1169,LabCorp
+1170,Lake Trust Credit Union
+1171,"Langan Engineering and Environmental Services, Inc."
+1172,Lark Health
+1173,Las Vegas Sands Corp.
+1174,Lattice Engines
+1175,Laureate International Universities
+1176,Lawrence Berkeley National Laboratory
+1177,Lawrence Livermore National Laboratory
+1178,LawTrades
+1179,Layer3 TV
+1180,Leadsmarket.com LLC
+1181,LeafLink
+1182,LeanTaas
+1183,LeapYear
+1184,Legends
+1185,Legg Mason
+1186,Leidos
+1187,LendingClub
+1188,LendingTree
+1189,Lenovo
+1190,"Level Ex, Inc."
+1191,LevelUp
+1192,Levi Strauss & Co.
+1193,Levy
+1194,"Lexmark International, Inc."
+1195,Liberty Lending
+1196,Liberty Mutual
+1197,Liberty University
+1198,Libra Services
+1199,Lieberman Research Worldwide
+1200,Life Chiropractic College West
+1201,Lifetouch
+1202,"LifeWatch Services, Inc."
+1203,Lightmatter
+1204,LimeBike
+1205,"Linc Global, Inc."
+1206,Lincoln Financial Group
+1207,Linden Lab
+1208,LiniumTalentAcquistion
+1209,Lionbridge Technologies
+1210,Liquidnet
+1211,Lirio
+1212,Listrak
+1213,Liv Communities
+1214,Location3
+1215,Lockheed Martin Corporation
+1216,"Lockton, Inc."
+1217,Logic Rule
+1218,Logic20/20
+1219,Logistics Management Institute
+1220,Logitech
+1221,LogMeIn
+1222,London Stock Exchange Group
+1223,Looker
+1224,L'OREAL USA
+1225,Lorven Technologies
+1226,Los Alamos Technical Associates
+1227,Louis Dreyfus
+1228,Lovepop
+1229,Lowe's
+1230,LTD Commodities
+1231,Lubbock Heart & Surgical Hospital
+1232,Lubrizol
+1233,Lucid Motors
+1234,Lucky Day
+1235,lululemon athletica
+1236,"Lumos Labs, Inc."
+1237,Lutron Electronics
+1238,LUXOTTICA
+1239,Lyft
+1240,Lyric
+1241,Lytx
+1242,M&T Bank
+1243,Maana
+1244,"MacAulay-Brown, Inc. (MacB)"
+1245,MachineZone
+1246,maconit
+1247,Macquarie Group Limited
+1248,Magento
+1249,MaineHealth
+1250,Major League Soccer
+1251,Manage
+1252,Managed Care Advisors
+1253,Management Concepts
+1254,Management Science Associates Inc.
+1255,ManTech International Corporation
+1256,Manulife
+1257,MapR
+1258,MarketDial
+1259,Marketers on Demand Inc.
+1260,Mars
+1261,Marsh & McLennan Companies
+1262,Martin's Point Health Care
+1263,Mary Washington Healthcare
+1264,Maryville University
+1265,Masco
+1266,MassMutual Financial Group
+1267,MasterCard
+1268,Matheny School and Hospital
+1269,Matrix Medical Network
+1270,Maven Wave Partners
+1271,Maxim Integrated
+1272,Maxus
+1273,Mayo Clinic
+1274,Mazda North American Operations
+1275,McGraw Hill Financial
+1276,McGraw-Hill Education
+1277,McKinsey & Company
+1278,"Measured Progress, Inc."
+1279,"Medallia, Inc."
+1280,Medical Science & Computing
+1281,"Medical Science & Computing, Inc."
+1282,Medical Transportation Management (MTM)
+1283,Medidata Solutions
+1284,"Medifast, Inc"
+1285,MedStar Health
+1286,MEDSTAR HEALTH RESEARCH INSTITUTE (MHRI)
+1287,MedStar National Rehabilitation Network
+1288,Medtronic
+1289,MEI Technologies
+1290,Meijer
+1291,Memorial Health System
+1292,Memorial Sloan Kettering
+1293,Mentor Graphics
+1294,Mercari
+1295,Merck
+1296,Mercy Health
+1297,Meridian Health Plan
+1298,Merkle Inc.
+1299,Merlin Labs
+1300,Methodist Le Bonheur Healthcare
+1301,MetLife
+1302,MetroHealth
+1303,MetroPlus Health Plan
+1304,MetroStar Systems
+1305,MGAC
+1306,MGM Resorts International
+1307,Miami HEAT
+1308,Microfinance Gateway
+1309,Micron
+1310,Microsoft
+1311,MicroStrategy
+1312,Mid-Atlantic Permanente Medical Group
+1313,MileOne Automotive
+1314,Milliman
+1315,Mindshare
+1316,Mission Staffing
+1317,Mississippi Lime Company
+1318,Mist Systems
+1319,MIT
+1320,MIT Lincoln Laboratory
+1321,"Mitchell International, Inc."
+1322,Mitre Corporation
+1323,Mixbook
+1324,MJHS
+1325,MKTG
+1326,MLB.com
+1327,MM.Lafleur
+1328,"MOBE, LLC"
+1329,Moda Health
+1330,Modern Meadow
+1331,Mojio
+1332,Molekule
+1333,Molina Healthcare
+1334,momofuku
+1335,Mondelēz International
+1336,Money Mart Financial Services
+1337,Monsanto
+1338,Moody's Corporation
+1339,Morgan Stanley
+1340,Morneau Shepell
+1341,Morning Consult
+1342,Morningstar
+1343,Mosaic North America
+1344,Motif Investing
+1345,Motion Recruitment Partners
+1346,Motorola Solutions
+1347,Mount Sinai Health System
+1348,Mountain America Credit Union
+1349,MSA Safety
+1350,MSA Safety Inc.
+1351,MSCI Inc.
+1352,MUFG
+1353,MultiPlan Inc.
+1354,MultiScale
+1355,"Multnomah County, OR"
+1356,Munich Re
+1357,MVM
+1358,MWW Group
+1359,myCOI
+1360,"Myers Media Group, LLC."
+1361,N3TWORK
+1362,Na Ali'i LLC
+1363,Nabler Web Solutions
+1364,Nanigans
+1365,Narvar
+1366,National Financial Partners
+1367,National Fish Wildlife Foundation
+1368,National Football League
+1369,National Funding
+1370,National Grid
+1371,National Home Rentals
+1372,National Instruments
+1373,National Renewable Energy Laboratory
+1374,National Security Agency
+1375,Nationwide Children's Hospital
+1376,Nauto
+1377,Navigator Management Partners
+1378,NaviHealth
+1379,"Navstar, Inc."
+1380,Navy Federal Credit Union
+1381,NBA Properties
+1382,NBCUniversal
+1383,"NCI Information Systems, Inc."
+1384,Nerdwallet
+1385,Nestle USA
+1386,NetApp
+1387,"NetBrain Technologies, Inc."
+1388,Netflix
+1389,NetMotion Software
+1390,Netsmart Technologies
+1391,NetVision Resources (NVR)
+1392,Neuberger Berman
+1393,NEURA
+1394,"NeuStar, Inc."
+1395,Nevro Corporation
+1396,New Knowledge
+1397,New Mexico State University
+1398,New Visions Central Office
+1399,New Visions for Public Schools
+1400,New York Blood Center
+1401,New York Life Insurance Company
+1402,New York Media LLC
+1403,New York State Office of the Attorney General
+1404,New York University
+1405,New York Yankees
+1406,NewYork-Presbyterian Hospital
+1407,Nexidia
+1408,Next Rev Technologies LLC
+1409,"NextEra Energy, Inc."
+1410,NextGen Healthcare
+1411,Nextiva
+1412,Nextphase Systems
+1413,Niagara Bottling
+1414,Niantic Labs
+1415,"Niantic, Inc."
+1416,Nice
+1417,Nielsen
+1418,Nift Networks
+1419,Nike
+1420,NinthDecimal
+1421,Nippon Dynawave Packaging
+1422,NISSAN
+1423,Nokia
+1424,Nolij Consulting
+1425,NORC at the University of Chicago
+1426,"Nordic Naturals, Inc."
+1427,Nordstrom
+1428,Norfolk Southern Corp
+1429,Northeastern University
+1430,Northern Trust Corp.
+1431,Northrop Grumman
+1432,Northwell Health
+1433,Northwest Farm Credit Services
+1434,"Northwest Permanente, P.C."
+1435,Northwestern Mutual
+1436,Novartis
+1437,Novelis
+1438,Novetta
+1439,Novus
+1440,NRG Energy
+1441,NSD
+1442,NT Concepts
+1443,Numerator
+1444,Numerdox
+1445,Nutanix
+1446,Nuvve
+1447,NVIDIA
+1448,NYC Careers
+1449,NYSTEC
+1450,Oath Inc
+1451,Object Computing Inc.
+1452,Object Partners
+1453,Obsidian Security
+1454,Obsidian Solutions Group
+1455,Ochsner Health System
+1456,Octane Lending
+1457,Octic Capital
+1458,Octo Consulting Group
+1459,Odyssey Systems Consulting Group
+1460,Office of the Nassau County Comptroller
+1461,OGSystems
+1462,Oklahoma Cancer Specialists and Research Institute
+1463,OM Partners
+1464,Omada Health
+1465,Omatic Software
+1466,Omnicell
+1467,One Call
+1468,OneAmerica
+1469,OneGlobe
+1470,OneKreate
+1471,OneSource Virtual
+1472,"Onyx Government Services, LLC"
+1473,"Open Systems Technologies, Inc."
+1474,OpenAI
+1475,Opendoor
+1476,OpenTable
+1477,Operation Smile
+1478,OppLOans
+1479,Optimizely
+1480,Optimove
+1481,Option Care
+1482,Optoro
+1483,Oracle
+1484,Orange County Transportation Authority
+1485,Orbital Insight
+1486,Orzota
+1487,Otsuka
+1488,Outreach Process Partners
+1489,Overstock.com
+1490,Owens Corning
+1491,Oxford Global Resources
+1492,P3 North America
+1493,PACCAR
+1494,Pace University
+1495,Pacific Northwest National Laboratory
+1496,Pairwise
+1497,Palo Alto Networks
+1498,Panasonic
+1499,"Pandora Media, Inc."
+1500,PANGEATWO
+1501,Par Government Systems Corporation
+1502,Paradyme Management
+1503,Parallel HR
+1504,Parametric
+1505,"PARC, a Xerox company"
+1506,Parker Hannifin Corporation
+1507,Parkland Health & Hospital System
+1508,Parkview Health
+1509,Partners HealthCare
+1510,"Patagonia, Inc"
+1511,PATHORAS CORPORATION
+1512,Paychex Inc.
+1513,Paycom
+1514,Payette Group
+1515,Payfone
+1516,Paypal
+1517,Peak6
+1518,Pearson
+1519,PeerStreet
+1520,Peloton
+1521,Peloton Technology
+1522,Penn State University
+1523,Penobscot Community Health Care
+1524,Penske
+1525,PepsiCo
+1526,Peraton
+1527,Perfect World Entertainment
+1528,Perficient
+1529,Performics
+1530,Periscope technologies inc
+1531,PetSmart
+1532,Pfizer
+1533,Pfizer Inc.
+1534,PG&E
+1535,Philips
+1536,Photon
+1537,Phreesia
+1538,Picarro
+1539,Piedmont Healthcare
+1540,Pilot AI
+1541,Pinkerton
+1542,"Pinnacle Engines, Inc."
+1543,"PitchBook Data, Inc."
+1544,Pitney Bowes
+1545,Pivotal Commware
+1546,Pizza Hut
+1547,"PJM Interconnection, LLC"
+1548,PlaceIQ
+1549,PlacePass
+1550,Plaid
+1551,Planned Systems International
+1552,Plante & Moran
+1553,Plastiq
+1554,PlayQ
+1555,Plume
+1556,Pluralsight
+1557,Plus3 IT Systems
+1558,Plymouth Rock Assurance Corporation
+1559,PNC
+1560,Pocket Gems
+1561,Polaris Industries
+1562,"Polis, Inc."
+1563,Poll Everywhere
+1564,Pond5
+1565,Pop Healthcare LLC
+1566,Porch
+1567,Porsche
+1568,PowerSchool
+1569,Powertek Corporation
+1570,PPL Corporation
+1571,PRA Group
+1572,PRA Health Sciences
+1573,Pragmatics
+1574,Pray
+1575,Precima
+1576,Precision for Medicine
+1577,Precision Health AI
+1578,Precision Value & Health
+1579,Precocity
+1580,Predictive Science
+1581,Preferred Resources Inc.
+1582,Premera Blue Cross
+1583,"Press Ganey Associates, Inc."
+1584,Priceline.com
+1585,Prime Healthcare
+1586,Prime Solutions Group (PSG)
+1587,Prime Therapeutics
+1588,Primerica
+1589,Primus Builders Inc.
+1590,Principal Financial Group
+1591,Privia Health
+1592,Probity Inc.
+1593,Procter & Gamble
+1594,"Prodege, LLC"
+1595,"Productive Data Solutions, Inc."
+1596,Productive Edge
+1597,Prognos
+1598,Progressive
+1599,Progressive Leasing
+1600,Progrexion Holdings Inc
+1601,Prokarma Inc.
+1602,ProMedica
+1603,Proofpoint
+1604,Pros.
+1605,Prosearch Strategies
+1606,Prospect 33
+1607,"Prospect Medical Holdings, Inc."
+1608,Prospect Medical Systems
+1609,Protective Life Corporation
+1610,Proteus Digital Health
+1611,Providence Health & Services
+1612,Prudential
+1613,PTP
+1614,Public Company Accounting Oversight Board
+1615,Public Consulting Group
+1616,Publicis Spine
+1617,Publicis.Sapient
+1618,PureCars
+1619,"Purple Communications, Inc."
+1620,PwC
+1621,Pythian
+1622,Q2ebanking
+1623,QIC Limited
+1624,Qikspace
+1625,"Quadrint, Inc."
+1626,Qualtrics
+1627,Qualys
+1628,Quantcast
+1629,Quantiply Corporation
+1630,QuantumBlack
+1631,Quartet
+1632,Quest Analytics
+1633,Quest Diagnostics
+1634,QuEST Global Engineering
+1635,Quicken Loans
+1636,Quinstreet
+1637,Quora
+1638,Qwinix
+1639,QxBranch
+1640,Rackspace
+1641,Radian Group Inc.
+1642,Radiance Technologies Inc.
+1643,Radiant Solutions
+1644,Rally Health
+1645,Ramsey Solutions
+1646,Rational Consulting
+1647,Rauxa
+1648,Raymond James
+1649,Raytheon
+1650,RB
+1651,RBC
+1652,"RE/MAX, LLC"
+1653,Real Capital Analytics (RCA)
+1654,Realogy
+1655,realtor.com
+1656,Recorded Future
+1657,Red Ventures
+1658,Redfin
+1659,Redfish Technology - High Tech Executive Recruiters
+1660,Reflektive
+1661,Regional One Health
+1662,Regions Bank
+1663,Regis Corporation
+1664,REI
+1665,Relevant Healthcare Technologies
+1666,RELX Group
+1667,"Remedy BPCI Partners, LLC."
+1668,Remedy Partners
+1669,Renew Financial
+1670,Renewable Energy Systems Ltd.
+1671,Renown Health
+1672,Rent-A-Center
+1673,"RentPath, LLC"
+1674,Reorg Research
+1675,Reputation.com
+1676,Research Innovations Inc
+1677,ResMed
+1678,"Resolvit, LLC"
+1679,"Resource Systems Group, Inc."
+1680,Restoration Media
+1681,REsurety
+1682,"RetailMeNot, Inc."
+1683,RhythmOne
+1684,Rice University
+1685,Rifiniti
+1686,Ring Inc.
+1687,Riot Games
+1688,RiskSpan
+1689,Riverside Research
+1690,RK
+1691,Robert Walters
+1692,Roche
+1693,RocksBox
+1694,Rockstar New York
+1695,Rockstar San Diego
+1696,Rockwell Collins
+1697,Roku
+1698,Rosecrance Health Network
+1699,Ross-Carlisle Group
+1700,Rover
+1701,RS Energy Group
+1702,RubrYc Therapeutics
+1703,Russian School of Mathematics
+1704,RWJBarnabas Health
+1705,Ryder
+1706,S&P Global
+1707,Sabio Mobile
+1708,Sabre
+1709,Safeway Corp.
+1710,Sage Intacct
+1711,SAIC
+1712,SailPoint
+1713,Salesforce
+1714,Samsung
+1715,"Samsung Semiconductor, Inc."
+1716,Sandhills Publishing
+1717,SanofiUS
+1718,Santa Clara Family Health Plan
+1719,Santander Consumer USA
+1720,SAP
+1721,Sartorius Corporation
+1722,Sartorius North America
+1723,SAS Institute
+1724,Satsyil Corporation
+1725,Scalable Digital
+1726,Scaleapi
+1727,SCAN Health Plan
+1728,Schneider National
+1729,Schnucks
+1730,Scholastic
+1731,Schoolzilla
+1732,ScienceSoft USA Corporation
+1733,Scoop Technologies
+1734,Scoot Networks
+1735,Seagate Technology
+1736,Sealed Air
+1737,Seasoned
+1738,Seattle Children’s
+1739,SECU
+1740,securonix
+1741,Sedgwick Claims Management Services
+1742,Selective Insurance Group
+1743,Self Regional Healthcare
+1744,Sentara Healthcare
+1745,Sentieo
+1746,Sentry Insurance
+1747,Sephora
+1748,"Serco , Inc."
+1749,"Service Management Group, Inc."
+1750,ServiceLink
+1751,ServiceMaster
+1752,ServiceNow
+1753,ServiceTitan
+1754,Servient Inc
+1755,"Sevatec, Inc."
+1756,"ShareThis, Inc"
+1757,SharpSpring
+1758,Shell
+1759,SHI International Corp.
+1760,Shift Technology
+1761,SHINE Systems & Technologies
+1762,ShipBob Inc
+1763,Shippensburg University
+1764,Shippo
+1765,"Shoes For Crews, Inc."
+1766,Shutterfly
+1767,Siemens
+1768,Siena College
+1769,Sierra Lobo
+1770,Sigma Space
+1771,Signify
+1772,Signifyd
+1773,SigOpt
+1774,Silicon Valley Bank
+1775,Simon-Kucher & Partners
+1776,Simons Foundation
+1777,Simple
+1778,Sirius XM Radio
+1779,Sitecore
+1780,Skillsoft
+1781,Slack
+1782,Slalom Consulting
+1783,Smartly
+1784,SmartThings
+1785,Smith & Nephew
+1786,Smith Hanley Associates
+1787,Smiths Detection
+1788,Smule
+1789,Snag
+1790,Snap Inc.
+1791,Snowflake Computing
+1792,Social Solutions
+1793,SocialWithin
+1794,Society for Human Resource Management
+1795,Socure
+1796,SoFi
+1797,Softrams
+1798,Softvision
+1799,SoftVision - North America & UK
+1800,Solidus Technical Solutions
+1801,Solomon Associates
+1802,Solomon Page
+1803,Solving It
+1804,Sony Interactive Entertainment PlayStation
+1805,South Dakota State University Foundation
+1806,Southern California Edison
+1807,Southern Methodist University
+1808,Southern Poverty Law Center
+1809,Sovrn Holdings
+1810,SpaceCurve
+1811,SpartanNash
+1812,Spireon
+1813,Splunk
+1814,Spokeo
+1815,Spotify
+1816,SpotX
+1817,Spreetail
+1818,Sprint
+1819,Spy Pond Partners
+1820,Square
+1821,"SRC, Inc."
+1822,SSi
+1823,St. Joseph Health
+1824,St. Jude Children's Research Hospital
+1825,Standard Insurance Company
+1826,Stanford University
+1827,Stanley Black & Decker
+1828,stanleyreid
+1829,Staples
+1830,Starbucks
+1831,State Auto Insurance Companies
+1832,State Farm
+1833,State of Arizona
+1834,State of New Mexico
+1835,State of North Carolina
+1836,State of Washington
+1837,State Street
+1838,stearns bank
+1839,Stella.ai
+1840,Stessa
+1841,"STOBER Drives, Inc."
+1842,Stormont-Vail Healthcare
+1843,"Stratacache, A Family of Companies"
+1844,"Strategic Resources, Inc."
+1845,Straumann
+1846,Strava
+1847,Stream
+1848,StreetLight Data
+1849,Stride Search
+1850,Stryker
+1851,StubHub
+1852,Subaru of America
+1853,SUBWAY
+1854,Success Academy Charter Schools
+1855,"Sullivan, Cotter and Associates, Inc."
+1856,Sumeru Solutions
+1857,SumTotal Systems
+1858,Sun Basket
+1859,Sun Life Financial
+1860,SunPower Corporation
+1861,SunTrust
+1862,Superior Vision
+1863,Suplari
+1864,Susquehanna International Group
+1865,Swagelok
+1866,sweetgreen
+1867,Sweetser
+1868,SWIFT
+1869,Swift Navigation
+1870,Swiss Re
+1871,Symantec
+1872,Symphony Talent
+1873,Synchronoss
+1874,"Synchronoss Technologies, Inc."
+1875,Synechron
+1876,Syneos Health Commercial Solutions
+1877,Syngenta
+1878,"Syntelli Solutions, Inc"
+1879,SYSCO
+1880,System1
+1881,System1 Biosciences
+1882,Systems Staffing Group
+1883,T. Parker Host
+1884,T. Rowe Price
+1885,T1D Exchange
+1886,Tableau
+1887,Taboola
+1888,"Tabula Rasa Healthcare, Inc"
+1889,"TACG, LLC"
+1890,Taino Consulting Group
+1891,Takeda Pharmaceuticals
+1892,Talent Plus
+1893,Talking Rain Beverage Company
+1894,Tampa Family Health Centers
+1895,Targetbase
+1896,Tate & Lyle
+1897,Tavant Technologies
+1898,TE Connectivity
+1899,Teacher Retirement System of Texas
+1900,Team Red Dog
+1901,Technamo LLC
+1902,Technicolor
+1903,Technology Partners
+1904,Techshed
+1905,Tek Experts
+1906,TeleTracking Technologies
+1907,Tendril
+1908,Ten-X
+1909,Teradata
+1910,Tesla
+1911,Tesorio
+1912,Tessella
+1913,Texas Health and Human Services Commission
+1914,Textio
+1915,TFS
+1916,TGS Management Company
+1917,Thales
+1918,The Aerospace Corporation
+1919,The American College of Radiology
+1920,The Black Tux
+1921,The Boston Consulting Group
+1922,The Boston Globe
+1923,"The Cadmus Group, Inc."
+1924,The Carian Group
+1925,The Carle Foundation
+1926,The Church of Jesus Christ of Latter-day Saints
+1927,The Climate Corporation
+1928,The Clorox Company
+1929,The Denzel Group
+1930,The Dow Chemical Company
+1931,"The Hagan-Ricci Group, Inc."
+1932,The Hanover Insurance Group
+1933,The Home Depot
+1934,The International Fund for Animal Welfare
+1935,The J. M. Smucker Company
+1936,The Logistics Company
+1937,The Meet Group
+1938,The Money Source
+1939,The Motley Fool
+1940,The National Association of Manufacturers
+1941,The New School
+1942,The New York Times
+1943,The Parking Spot
+1944,The Rawlings Group
+1945,The Situs Companies
+1946,The Standard
+1947,"The TJX Companies, Inc."
+1948,The University of Kansas Health System
+1949,The University of Pittsburgh
+1950,The Vancouver Clinic
+1951,The Walsh Group
+1952,The Wonderful Company LLC
+1953,The Zebra
+1954,Theoris Services
+1955,Thermo Fisher Scientific
+1956,ThinkIQ
+1957,ThirdLove
+1958,Thomas Jefferson University and Hospitals
+1959,thoughtmatrix
+1960,ThoughtWorks
+1961,thredUP Inc
+1962,Thrive Market
+1963,thrivecausemetics.com
+1964,Thunder Token
+1965,TIBCO Software
+1966,Ticketmaster
+1967,Tilt Lending
+1968,Time Warner
+1969,TISTA Science and Technology Corporation
+1970,T-Mobile
+1971,TMP Worldwide
+1972,Tompkins International
+1973,Tonal
+1974,Toole Design Group LLC
+1975,TopSchoolJobs.org
+1976,Toptal
+1977,Tory Burch
+1978,Toyota Research Institute
+1979,TPC Energy Fund
+1980,Trace3
+1981,TracFone Wireless
+1982,Tractor Supply Company
+1983,TracyLocke
+1984,Tradesy
+1985,Transamerica
+1986,Tranzact
+1987,Travelers
+1988,"Traxion Group, Inc"
+1989,Tredence
+1990,Trend Micro
+1991,Trianz
+1992,Trident Technologies LLC
+1993,TriHealth
+1994,Trimble
+1995,Trimble Inc.
+1996,Trinity Health
+1997,TripAdvisor
+1998,TripleLift
+1999,Triquetro
+2000,"TrueCar, Inc."
+2001,TSheets
+2002,Tsource
+2003,"Turnitin, LLC"
+2004,TVG Network Betfair US
+2005,Twentieth Century Fox
+2006,TWINN INTELLIGENCE GROUP
+2007,Twitch
+2008,Twitter
+2009,"Two Sigma Investments, LLC."
+2010,TXU Energy
+2011,U.S. Anesthesia Partners
+2012,U.S. Bank
+2013,"U.S. Venture, Inc."
+2014,Uber
+2015,Ubisoft
+2016,UBS
+2017,UC DAVIS HEALTH SYSTEM
+2018,UCHealth
+2019,UCLA Health
+2020,UCS Consulting
+2021,UES
+2022,"Uhana, Inc."
+2023,UiPath
+2024,UJA Federation of New York
+2025,uJoynus
+2026,Ukpeagvik Iñupiat Corporation/Bowhead Family of Companies
+2027,UL LLC
+2028,Ulta Beauty
+2029,Ultimate Software
+2030,Under Armour
+2031,Underwriters Laboratories
+2032,Unilever
+2033,Union Bank & Trust
+2034,Unisys
+2035,UNITE HERE HEALTH
+2036,United Fire Group
+2037,UNITED NEGRO COLLEGE FUND
+2038,United Network for Organ Sharing
+2039,United States Associati
+2040,United States Steel
+2041,Unity Technologies
+2042,Universal Consulting Services
+2043,Universal Health Services
+2044,Universities Space Research Association
+2045,University of California Berkeley
+2046,University of California San Francisco
+2047,University of California San Francisco Medical Center
+2048,University of California UCOP
+2049,University of Colorado
+2050,University of Idaho
+2051,University of Maryland Medical System
+2052,"University of Maryland, Baltimore"
+2053,University of Massachusetts Medical School
+2054,University of Michigan
+2055,University of Minnesota
+2056,University of Pennsylvania
+2057,University of Texas at Arlington
+2058,University of Texas at San Antonio
+2059,University of Utah
+2060,University of Virginia Health System
+2061,University of Washington
+2062,UpClear
+2063,UPMC
+2064,UPS
+2065,Upstart
+2066,Upwork
+2067,US Information Technologies
+2068,US Pharmacopeia
+2069,US Software & Consulting
+2070,USAA
+2071,usajobs.gov
+2072,USANA Health Sciences
+2073,USANA Health Services
+2074,USfalcon
+2075,UT Southwestern Medical Center
+2076,UTC
+2077,Valassis Digital
+2078,Vanda Pharmaceuticals Inc.
+2079,Vanguard
+2080,Vantiv
+2081,Varen Technologies
+2082,Varian Medical Systems
+2083,VCU Health System
+2084,Veeva
+2085,Vera Whole Health
+2086,Verb Surgical
+2087,Verisk Analytics
+2088,Veritone
+2089,Verizon
+2090,Verra Mobility
+2091,Verscend Technologies
+2092,Vertex
+2093,Vertex Pharmaceuticals
+2094,"Vertical Careers, Inc."
+2095,"Veteran's Enterprise Technology Solutions, Inc."
+2096,Vets First Choice
+2097,Vettery
+2098,Vevo
+2099,Viacom
+2100,Viant
+2101,ViaSat
+2102,VideoAmp
+2103,VillageCare
+2104,VincentBenjamin
+2105,Viome
+2106,"Viral Launch, Inc."
+2107,Virbac Animal Health
+2108,Virginia Jobs
+2109,Virginia Mason Medical Center
+2110,Virginia Tech
+2111,Virginia Tech Applied Research Corporation
+2112,Virtru
+2113,VirtueGroup
+2114,Virtus Partners
+2115,Visa
+2116,"Visionist, Inc."
+2117,Vista Technology Services
+2118,Vistage Worldwide
+2119,Vistaprint
+2120,Vistra Energy
+2121,"Visual Awareness Technologies and Consulting, Inc."
+2122,Vitals
+2123,Vituity
+2124,Vivid Seats
+2125,VividCortex
+2126,Vivint Smart Home
+2127,Vivo
+2128,VMware
+2129,Volanno
+2130,Voloridge Investment Management
+2131,Volvo Group
+2132,Vox Financial Partners
+2133,Voya Financial
+2134,VROOM
+2135,VSCO
+2136,VVC Holding Corp
+2137,W.R. Berkley
+2138,W.W. Grainger
+2139,Walmart
+2140,Walmart eCommerce
+2141,Warby Parker
+2142,Wargaming.net
+2143,Washington State Hospital Association (WSHA)
+2144,Watts Water Technologies
+2145,Wayfair
+2146,Waymo
+2147,Wealthfront
+2148,Weatherford
+2149,WebbMason Analytics
+2150,Weber Shandwick
+2151,WebMD
+2152,Webster Bank
+2153,WeddingWire
+2154,WeedMaps
+2155,WellCare
+2156,"Wellmore, Inc."
+2157,Wells Fargo
+2158,WellSky
+2159,Welltower
+2160,West Corporation
+2161,Western Digital
+2162,Western National Insurance Group
+2163,Western Union
+2164,WestRock
+2165,WeWork
+2166,WEX Inc.
+2167,Whole Foods Market
+2168,Wildlife Conservation Society
+2169,Wiley
+2170,William Blair & Company
+2171,"William E. Wecker Associates, Inc."
+2172,"Williams-Sonoma, Inc."
+2173,Willis Towers Watson
+2174,Windstream
+2175,Windstream Communications
+2176,Wipro LTD
+2177,Wish
+2178,Wolters Kluwer
+2179,Wolverine Trading
+2180,Women's World Banking
+2181,Wood
+2182,Workbridge Associates
+2183,Workday
+2184,World Fuel
+2185,WP Engine
+2186,Wunderman
+2187,WW International (formerly Weight Watchers)
+2188,WWE
+2189,Wycliffe Bible Translators
+2190,Wyndham Hotels & Resorts
+2191,Xactly Corporation
+2192,Xandr
+2193,Xilinx
+2194,XL Catlin
+2195,XLA
+2196,"XPO Logistics, Inc."
+2197,Xylem
+2198,Yamaha
+2199,Yapstone
+2200,Yelp
+2201,Yodlee
+2202,YourMechanic
+2203,Youth Policy Institute
+2204,Zachary Piper Solutions
+2205,Zazzle
+2206,Zeiss
+2207,ZEISS Group
+2208,Zelis Healthcare
+2209,ZeniMax Media Inc.
+2210,Zenith
+2211,ZestFinance
+2212,zesty.ai
+2213,Zeta Global
+2214,Zeus
+2215,Zeus Living
+2216,ZF
+2217,Zilker Partners
+2218,Zillow Group
+2219,Zimmerman Advertising
+2220,ZIN TECHNOLOGIES INC.
+2221,Zingbox
+2222,Zipcar
+2223,ZocDoc
+2224,Zodiac Aerospace
+2225,Zot Inc.
+2226,Zotec Partners
+2227,Zscaler
+2228,zulily
+2229,"Zumba Fitness, LLC"
+2230,Zumper
+2231,Zurich North America
+2232,Zynga

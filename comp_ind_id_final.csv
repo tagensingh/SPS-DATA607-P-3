@@ -1,0 +1,35 @@
+id,Company_Industry,id
+1,Aerospace and Defense,1
+2,Agriculture and Extraction,2
+3,Auto,3
+4,Banks and Financial Services,4
+5,Computers and Electronics,5
+6,Construction,6
+7,Consulting and Business Services,7
+8,Consumer Goods and Services,8
+9,Education and Schools,9
+10,Energy and Utilities,10
+11,Food and Beverages,11
+12,Food and BeveragesConsulting and Business Services,12
+13,Government,13
+14,Health Care,14
+15,Human Resources and Staffing,15
+16,Industrial Manufacturing,16
+17,Industrial ManufacturingAgriculture and Extraction,17
+18,Industrial ManufacturingConstruction,18
+19,Industrial ManufacturingConsumer Goods and Services,19
+20,Insurance,20
+21,InsuranceHealth Care,21
+22,Internet and Software,22
+23,"Media, News and Publishing",23
+24,Organization,24
+25,Pharmaceuticals,25
+26,Real Estate,26
+27,Real EstateReal Estate,27
+28,"Restaurants, Travel and Leisure",28
+29,"Restaurants, Travel and LeisureConsulting and Business Services",29
+30,Retail,30
+31,RetailConsumer Goods and Services,31
+32,Telecommunications,32
+33,Transport and Freight,33
+34,NONE,34

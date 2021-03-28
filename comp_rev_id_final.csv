@@ -1,0 +1,6 @@
+rev_id,range,rev_id
+1,Less than $1B (USD),1
+2,$1B to $5B (USD),2
+3,$5B to $10B (USD),3
+4,More than $10B (USD),4
+5,NONE,5
