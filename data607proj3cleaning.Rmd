@@ -97,20 +97,21 @@ head(skills)
 
 # EDA
 
-#### most popular skills
+#### These are the top 10 jobs that companies are looking for. Most notably, over 60% of jobs are looking for candidates with python knowledge and over 50% of jobs require SQL. R and Machine learning are also incredibly saught after with nearly 40% of the jobs looking for candidates with those skills 
 
 ```{r}
 # most popular skills
+num_jobs = dim(jobs)[1]
 skills %>%
   group_by_at('skill_list')%>%
-  summarise(percent = n()/dim(skills)[1])%>%
+  summarise(percent = n()/num_jobs)%>%
   arrange(desc(percent))%>%
   head(10)%>%
-  ggplot(aes(reorder(skill_list,percent),percent))+geom_bar(stat = 'identity')+coord_flip()+labs(x = 'Skills',title = "Most Desired Data Science Skills Skills")
+  ggplot(aes(reorder(skill_list,percent),percent))+geom_bar(stat = 'identity',fill = '#A1B8A1')+coord_flip()+labs(x = 'Skills',title = "Most Desired Data Science Skills in the U.S.")
 
 ```
 
-#### wordcloud
+#### wordcloud that shows popularity of skills based on size of the word 
 
 ```{r}
 skill_count = skills %>%
@@ -124,18 +125,19 @@ wordcloud(skill_count$skill_list,skill_count$frequency,min.freq = 5,max.words=15
 
 ```
 
+#### Just looking at jobs in NY, SQL and Python are desired for most roles (over 50%) with R and Machine Learning being necessary for nearly 40%. These results are very similar to our results for the entire United States
+
 ```{r}
+ny = jobs[jobs["Location"] == "NY",]
+ny_skills = merge(ny,skills,on = 'X')
+num_jobs_ny = dim(ny)[1]
 
-job_skills = merge(jobs,skills,on = 'X')
-
-ny = job_skills[job_skills["Location"] == "NY",]
-
-ny %>% 
+ny_skills %>% 
   group_by(skill_list)%>%
-  summarise(percent = n()/dim(skills)[1])%>%
+  summarise(percent = n()/num_jobs_ny)%>%
   arrange(desc(percent))%>%
   head(10)%>%
-  ggplot(aes(reorder(skill_list,percent),percent))+geom_bar(stat = 'identity')+coord_flip()+labs(x = 'Skills',title = "Most Desired Data Science Skills Skills in NY")
+  ggplot(aes(reorder(skill_list,percent),percent))+geom_bar(stat = 'identity', fill = '#C4A9C4')+coord_flip()+labs(x = 'Skills',title = "Most Desired Data Science Skills Skills in NY")
 ```
 
 
