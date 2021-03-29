@@ -57,7 +57,7 @@ The DataMiners team is to extract and discover patterns in large data sets invol
 
 * **Ramnivas Singh** - Data & Analytics Lead \
 * **Deepak Sharma** - Data Scientist \
-* **Richard Zhou** - Data Scientist \
+* **Richard Zheng** - Data Scientist \
 * **Tage Singh** - Data Architect \
 * **Matthew Lucich** - Data Modeler & Statistician
 
@@ -74,7 +74,7 @@ The DataMiners team collaborated in understanding the question at hand.
 * Run statistics and data models
 * Ultimately come to the conclusions
 
-**Two prolong** - Team used 'two prolong' approach. With clearly defined tasks and regular stand -ups (Agile Scrum), each team member was onboarded with given ask, approach and final result. By using 'two prolong' approach  - \
+**Two pronged** - Team used 'two pronged' approach. With clearly defined tasks and regular stand -ups (Agile Scrum), each team member was onboarded with given ask, approach and final result. By using 'two pronged' approach  - \
 1. Sub-team focused on data sourcing, cleansing and make it available in relation database \
 2. Second sub-team focused on data analysis, modeling, trends and statistics applicability 
 
