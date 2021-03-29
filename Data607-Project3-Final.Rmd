@@ -1,0 +1,820 @@
+---
+title: "Project 3 : Most Valued Data Science Skills"
+author: "**The DataMiners** - Ramnivas Singh | Deepak Sharma | Tage Singh | Matthew Lucich | Richard Zheng" 
+date: "`r Sys.Date()`" 
+output:
+  html_document:
+    theme: default
+    highlight: espresso
+    toc: yes
+    toc_depth: 5
+    toc_float:
+      collapsed: yes
+  pdf_document:
+    toc: yes
+    toc_depth: '5'
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(eval = TRUE, results = TRUE, message = FALSE, warning = FALSE)
+```
+
+--------------------------------------------------------------------------------
+
+\clearpage
+
+# 1.0 Summary
+Data scientists are highly educated – 88% have at least a Master’s degree and 46% have PhDs – and while there are notable exceptions, a very strong educational background is usually required to develop the depth of knowledge necessary to be a data scientist. Each data scientist is expected to be equipped with most valuable skills in their data science toolkit - 
+```'
+What are the most valued data science skills?
+```
+
+Key objective of this project is answer this question.A collaborative approach is used from beginning to end of the project find '*most valued data science skill*'.
+A Data science job dataset is used to analyze the skills required for around 10K job posts. Team also analyzed trends and ran data thru various models to prepare a conclusion. These models are - \
+
+* Classification Tree \
+* Random Forest \
+* Naive Bayes \
+
+--------------------------------------------------------------------------------
+
+\clearpage
+
+# 2.0 Acceptance Criteria
+* Determine what tool(s) are used as a group to effectively collaborate, share code and any project documentation
+* Determine what data to collect, where the data can be found, and how to load it
+* Determine what collected data should reside in a relational database, in a set of normalized tables
+* Perform any needed tidying, transformations, and exploratory data analysis in R
+* Deliverable should include all code, results, and documentation of motivation, approach, and findings
+* Try out statistics and data models \
+
+--------------------------------------------------------------------------------
+
+\clearpage
+
+# 3.0 The DataMiners
+The DataMiners team is to extract and discover patterns in large data sets involving methods at the intersection of machine learning, statistics, and database systems to answer key question - What are the most valued data science skills. This team include listed team members with their defined responsibilities for this project
+
+* **Ramnivas Singh** - Data & Analytics Lead \
+* **Deepak Sharma** - Data Scientist \
+* **Richard Zhou** - Data Scientist \
+* **Tage Singh** - Data Architect \
+* **Matthew Lucich** - Data Modeler & Statistician
+
+---------------------------------------------
+\clearpage
+
+# 4.0 Our Approach
+The DataMiners team collaborated in understanding the question at hand. 
+
+* Brainstorming our approach and where we might pull data from
+* Deciding on a dataset and then acquiring
+* Tidying & transforming the dataset
+* Visualizing & analyzing this dataset
+* Run statistics and data models
+* Ultimately come to the conclusions
+
+**Two prolong** - Team used 'two prolong' approach. With clearly defined tasks and regular stand -ups (Agile Scrum), each team member was onboarded with given ask, approach and final result. By using 'two prolong' approach  - \
+1. Sub-team focused on data sourcing, cleansing and make it available in relation database \
+2. Second sub-team focused on data analysis, modeling, trends and statistics applicability 
+
+## 4.1 Collaborative Tools 
+This team collaborated virtually on Slack, Google Docs, Zoom, AWS, emails and Github
+```
+ - Slack
+ - Google Docs
+ - Zoom
+ - AWS
+ - Outlook
+ - GitHub
+ ```    
+ 
+## 4.2 Libraries & Capabilities used
+```
+Libraries:
+ - aws.s3
+ - caret
+ - data.table
+ - dplyr
+ - DT
+ - e1071
+ - fastDummies
+ - ggplot2
+ - ggplot2
+ - gtrendsR
+ - httr
+ - lares
+ - mgsub
+ - plotly
+ - randomForest
+ - readr
+ - rlist
+ - RMySQL
+ - rpart
+ - rpart.plot
+ - stats
+ - stringr
+ - tidyverse
+ - wordcloud
+
+Capabilities:
+ - AWS RDS MySQL
+ - AWS S3
+ - Gitbub
+ - Google Trends
+ - RPubs.com
+ - R Studio
+```
+---------------------------------------------
+\clearpage
+
+# 5.0 Implementation
+
+## 5.1 Load Libraries
+```{r results = FALSE, message = FALSE, warning = FALSE}
+library(mgsub)
+library(ggplot2)
+library(plotly)
+library(tidyverse)
+library(ggplot2)
+library(dplyr)
+library (readr)
+library(RMySQL)
+library(DT)
+library(lares)
+library(httr)
+library(stringr)
+library(data.table)
+library(aws.s3)
+library(rlist)
+library(wordcloud)
+library(gtrendsR)
+library(stats)
+library(rpart)
+library(fastDummies)
+library(rpart.plot)
+library(randomForest)
+library(e1071)
+library(caret)
+```
+
+## 5.2 Initiaize AWS S3 Object Access
+```{r  results = FALSE, message = FALSE, warning = FALSE}
+library(lares)
+bucket<-get_creds()$`aws.s3`$bucket
+Sys.setenv(
+  "AWS_ACCESS_KEY_ID" = get_creds()$`aws.s3`$accessKeyId,
+  "AWS_SECRET_ACCESS_KEY" = get_creds()$`aws.s3`$accessKey,
+  "AWS_DEFAULT_REGION" = get_creds()$`aws.s3`$region)
+```
+
+## 5.3 Data Source & Acquisition
+To answer key question - Team used [Indeed Dataset - Data Scientist/Analyst/Engineer](https://www.kaggle.com/elroyggj/indeed-dataset-data-scientistanalystengineer?select=indeed_job_dataset.csv)
+
+## 5.4 Loading data
+```{r}
+data<-s3read_using(FUN = read.csv, object = "indeed_job_dataset.csv", bucket = bucket)
+dim(data)
+```
+
+## 5.5 Data Transformation
+```{r}
+#function that transforms "python list" string into R vector
+clean_string = function(string){
+list = str_replace(string,"\\[","") %>%
+  str_replace("\\]","") %>%
+  str_replace_all("\\'","") %>%
+  str_split(",")
+return (trimws(list[[1]]))
+}
+```
+
+## 5.6 Cleaning data
+### Job Title
+
+```{r}
+# subset job titles
+job_title = unique(data[c('Job_Title','Job_Type')])
+head(job_title)
+```
+
+### Company
+
+```{r}
+# subset companies
+companies = unique(data[c('Company','No_of_Reviews','No_of_Stars','Company_Revenue','Company_Employees','Company_Industry')])
+# drop nulls
+companies = drop_na(companies)
+head(companies)
+```
+
+### Jobs
+
+```{r}
+# subset jobs
+jobs = data[c('X','Job_Title','Company','Queried_Salary','Date_Since_Posted','Location','Link')]
+head(jobs)
+```
+
+### Skills
+
+```{r}
+data = data[data$No_of_Skills>0,]
+x = data$X
+strings = data$Skill
+count = c()
+X = c()
+skill_list = c()
+# create vector count
+for (string in strings){
+  count = c(count,length(clean_string(string)))
+}
+#create skills dataframe
+for (i in seq(length(count))){
+  X = c(X,rep(x[i],count[i]))
+  skill_list = c(skill_list,clean_string(strings[i]))
+}
+skills = data.frame(X,skill_list)
+head(skills)
+```
+
+## 5.7 Download tables as csv
+
+```{r}
+write.csv(job_title,"job_title.csv",row.names=FALSE)
+write.csv(companies,"Company.csv",row.names=FALSE)
+write.csv(jobs,"Job_master.csv",row.names=FALSE)
+write.csv(skills,"skills.csv",row.names=FALSE)
+```
+This data is loaded in the tables described in next section
+
+## 5.8 Data Tables
+Listed below are database tabled used
+```
+Company           : Company that posted the job posting
+Company_Revenue   :	Annual revenue of hiring company
+Company_Employees :	Employee count of hiring company
+Company_Industry  :	Industry of hiring company
+State             :	State the job opening is located in
+Job_master        : Job details
+Skills            : Skills master list
+Salary            : Salary offered
+Job_skills        : Skills needed for posted job
+```
+
+## 5.9 Create data tables
+```
+CREATE TABLE `company` (
+  `company_id` int NOT NULL,
+  `company` text,
+  PRIMARY KEY (`company_id`)
+)
+
+CREATE TABLE `company_employee` (
+  `comp_emp_id` int NOT NULL,
+  `no_of_emp` text,
+  PRIMARY KEY (`comp_emp_id`)
+) 
+CREATE TABLE `company_industry` (
+  `id` int NOT NULL,
+  `industry` text,
+  PRIMARY KEY (`id`)
+) 
+
+CREATE TABLE `company_revenue` (
+  `revenue_id` int NOT NULL,
+  `revenue_range` text,
+  PRIMARY KEY (`revenue_id`)
+) 
+
+CREATE TABLE `job_master` (
+  `job_id` int NOT NULL,
+  `job_title` text,
+  `salary_id` int DEFAULT NULL,
+  `comp_id` int DEFAULT NULL,
+  `state_id` int DEFAULT NULL,
+  `comp_rev_id` int DEFAULT NULL,
+  `comp_emp_id` int DEFAULT NULL,
+  `comp_ind_id` int DEFAULT NULL,
+  PRIMARY KEY (`job_id`),
+  KEY `FK_JOB_STATE_idx` (`state_id`),
+  KEY `FK_COMPANY_REV_idx` (`comp_rev_id`),
+  KEY `FK_COMPANY_EMPLOYEE_idx` (`comp_emp_id`),
+  KEY `FK_COMPANY_INDUSTRY_idx` (`comp_ind_id`),
+  KEY `FK_SALARY_idx` (`salary_id`),
+  KEY `FK_COMPANY_idx` (`comp_id`),
+  CONSTRAINT `FK_COMPANY` FOREIGN KEY (`comp_id`) REFERENCES `company` (`company_id`),
+  CONSTRAINT `FK_COMPANY_EMPLOYEE` FOREIGN KEY (`comp_emp_id`) REFERENCES `company_employee` (`comp_emp_id`),
+  CONSTRAINT `FK_COMPANY_INDUSTRY` FOREIGN KEY (`comp_ind_id`) REFERENCES `company_industry` (`id`),
+  CONSTRAINT `FK_COMPANY_REV` FOREIGN KEY (`comp_rev_id`) REFERENCES `company_revenue` (`revenue_id`),
+  CONSTRAINT `FK_JOB_STATE` FOREIGN KEY (`state_id`) REFERENCES `state` (`state_id`),
+  CONSTRAINT `FK_SALARY` FOREIGN KEY (`salary_id`) REFERENCES `salary` (`salary_id`)
+) 
+
+CREATE TABLE `job_skills` (
+  `job_id` int DEFAULT NULL,
+  `job_title` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
+  `skill_id` int DEFAULT NULL,
+  KEY `FK_JOB_idx` (`skill_id`),
+  KEY `FK_JOB_ID_idx` (`job_id`),
+  CONSTRAINT `FK_JOB_ID` FOREIGN KEY (`job_id`) REFERENCES `job_master` (`job_id`),
+  CONSTRAINT `FK_JOB_SKILLS` FOREIGN KEY (`skill_id`) REFERENCES `skills` (`skill_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `salary` (
+  `salary_id` int NOT NULL,
+  `salary_range` text,
+  PRIMARY KEY (`salary_id`)
+) 
+
+CREATE TABLE `skills` (
+  `skill_id` int NOT NULL,
+  `skill_desc` text,
+  PRIMARY KEY (`skill_id`)
+) 
+
+CREATE TABLE `state` (
+  `state_id` int NOT NULL,
+  `state_district` text,
+  `postal_code` text,
+  PRIMARY KEY (`state_id`)
+) 
+```
+
+### Load RDS credentials from secret management
+```{r}
+csvurl<-get_creds()$`aws.rds`$schema
+user <-get_creds()$`aws.rds`$user
+password <-get_creds()$`aws.rds`$creds
+host<-get_creds()$`aws.rds`$host
+dbname<-get_creds()$`aws.rds`$schema
+```
+
+### Initialize RDS Database connection
+```{r}
+connection = dbConnect(MySQL(), user = user, password = password, dbname = dbname, host = host)
+```
+
+### Get data function
+This common function is created to load data from a given table
+```{r}
+get_data<- function(table_name) {
+dataset <- tbl(connection,dbplyr::in_schema(dbname, table_name))
+  return(dataset)
+}
+```
+
+### Returns all relevant records
+```{r}
+d607_p3_all_recs<-as.data.frame(get_data('view_d607_p3_all_recs'))
+tblcompany<-as.data.frame(get_data('company'))
+tblcemployee<-as.data.frame(get_data('company_employee'))
+tblcindustry<-as.data.frame(get_data('company_industry'))
+tblcrevenue<-as.data.frame(get_data('company_revenue'))
+tbljobmaster<-as.data.frame(get_data('job_master'))
+tbljobskills<-as.data.frame(get_data('job_skills'))
+tblsalary<-as.data.frame(get_data('salary'))
+tblskills<-as.data.frame(get_data('skills'))
+tblstate<-as.data.frame(get_data('state'))
+```
+
+--------------------------------------------------------------------------------
+
+\clearpage
+
+# 6.0 Exploratory Data Analysis
+
+## 6.1 Most popular skills
+```{r}
+# most popular skills
+num_jobs = dim(jobs)[1]
+skills %>%
+  group_by_at('skill_list')%>%
+  summarise(percent = n()/num_jobs)%>%
+  arrange(desc(percent))%>%
+  head(10)%>%
+  ggplot(aes(reorder(skill_list,percent),percent))+
+  geom_bar(stat = 'identity',fill = '#A1B8A1')+coord_flip()+
+  labs(x = 'Skills',title = "Most Desired Data Science Skills in the U.S.")
+
+```
+\
+**Findings:**\
+
+* These are the top 10 jobs that companies are looking for. 
+* Most notably, over 60% of jobs are looking for candidates with python knowledge and over 50% of jobs require SQL. 
+* R and Machine learning are also incredibly sought after with nearly 40% of the jobs looking for candidates with those skills 
+
+## 6.2 Wordcloud based on size of the word 
+
+```{r}
+skill_count = skills %>%
+  group_by(skill_list)%>%
+  summarise(frequency = n())%>%
+  arrange(desc(frequency))
+wordcloud(skill_count$skill_list,skill_count$frequency,min.freq = 5,
+          max.words=150, random.order=FALSE, rot.per=0.1,
+          colors=brewer.pal(8, "Dark2"))
+```
+\
+**Findings:**\
+
+* Wordcloud shows Python, Machine Learning and SQL are most valuable skills
+* Hadoop, Spark, Java, AWS are other skills required for Data Science jobs 
+* C/C++ are still mentioned on job postings and appears to be a required skill
+
+## 6.3 Just looking at jobs in NY
+
+```{r}
+ny = jobs[jobs["Location"] == "NY",]
+ny_skills = merge(ny,skills,on = 'X')
+num_jobs_ny = dim(ny)[1]
+
+ny_skills %>% 
+  group_by(skill_list)%>%
+  summarise(percent = n()/num_jobs_ny)%>%
+  arrange(desc(percent))%>%
+  head(10)%>%
+  ggplot(aes(reorder(skill_list,percent),percent))+
+  geom_bar(stat = 'identity', fill = '#C4A9C4')+
+  coord_flip()+labs(x = 'Skills',title = "Most Desired Data Science Skills Skills in NY")
+```
+\
+**Findings:**\
+
+* For jobs in NY, SQL and Python are desired for most roles (over 50%) 
+* R and Machine Learning being necessary for nearly 40%. 
+* These results are very similar to our results for the entire United States
+
+## 6.4 Salary and job skill analysis
+```{r}
+derive_salary <- function(s) {
+        contains_range <- str_detect(s, '-')
+        if (contains_range == TRUE) {
+            text_range <- unlist(str_extract_all(s, '[0-9,]+'))
+            numeric_range <- as.numeric(str_remove_all(text_range, ','))
+            return(mean(c(numeric_range[1], numeric_range[2])))
+        } else {
+            as_text <- str_extract_all(s, '[0-9,]+')
+            as_numeric <- as.numeric(str_remove_all(as_text, ','))
+            return(as_numeric)
+        }
+}
+tblsalary$salary<-as.numeric(lapply(tblsalary$salary_range, derive_salary))
+jobmaster_salary = merge(x=tbljobmaster,y=tblsalary,by="salary_id")
+ggplot(jobmaster_salary,aes(x=as.factor(salary)))+
+geom_bar()
+quantile(jobmaster_salary$salary, c(0, .1, .25, .5, .75, .9, .95, .99))
+head(jobmaster_salary)
+```
+\
+**Findings:**\
+
+* With above we can say that 50% of jobs are in 110k range
+* 40% of jobs are in 90k range
+
+## 6.5 Count job post of different state
+```{r}
+# count job post of different state
+jobmaster_state <- merge(x=tbljobmaster,y=tblstate,by="state_id")
+df_jobs <- jobmaster_state %>% group_by(state_district,postal_code) %>% dplyr::summarize (n = n())
+df_jobs$hover <- with(df_jobs, paste(state_district, '<br>', "jobs:", n))
+# give state boundaries a white border
+l <- list(color = toRGB("white"), width = 2)
+# specify some map options
+g <- list(
+  scope = 'usa',
+  projection = list(type = 'albers usa'),
+  showlakes = TRUE,
+  lakecolor = toRGB('white')
+)
+# plot the map
+plot_geo(df_jobs, locationmode = 'USA-states') %>%
+  add_trace(
+    z = ~df_jobs$n,
+    locations = ~df_jobs$postal_code
+  ) %>%colorbar(title = "Data scientist Job Postings") %>%
+  layout(title = 'Data scientist Jobs by State',geo = g)
+```
+\
+**Findings:**\
+
+* California and New York are top state with most data science job posting
+* Arkansas is lowest in the list with few Data science job posting
+
+--------------------------------------------------------------------------------
+
+\clearpage
+
+# 7.0 Trends \
+In addition to knowing the current most sought after data science skills, knowing which are rising, declining, and remaining stable can provide much needed context to plan for the future. Google Trends is a tool that provides data on how popular a term is relative to its peak search volume. To clarify, no insights on search volume relative to other terms can be made from this data. For example, SQL has shown a consistent decrease in popularity and is currently approximately 35% compared to its peak popularity, while Spark is approximately 65% compared to its peak popularity. It is likely the current search volume for SQL is significantly higher than for Spark. \
+
+Due to Google Trends not having a public API, a 3rd party R package, gtrendsR, is used to source the data. Careful consideration was put into what skills to track over time and how to group them. We ultimately decided to group skills in terms of rising interest, declining interest, stable interest, and a category we call “peaked” which represents stark increases and decreases in popularity since 2010. Top skills were determined by the frequency they appeared in job posts. \
+
+## 7.1 Select Dataset \
+```{r}
+d607_p3_all_recs<-as.data.frame(get_data('view_d607_p3_all_recs'))
+top_skills <- d607_p3_all_recs %>% 
+                      select(skill_id, skill_desc) %>% 
+                      group_by(skill_desc) %>% 
+                      summarise(n = n()) %>%
+                      arrange(desc(n))
+```
+
+## 7.2 Google Trends for terms \
+
+```{r google-trends}
+hl <-"en-US"
+time <- "2010-01-01 2021-03-20"
+geo <- "US"
+
+# Google Trends for terms
+python_trend <- gtrends(keyword = "Python", geo = geo, time = time, hl = hl)
+sql_trend <- gtrends(keyword = "SQL", geo = geo, time = time, hl = hl)
+ml_trend <- gtrends(keyword = "Machine Learning", geo = geo, time = time, hl = hl)
+r_trend <- gtrends(keyword = "R", geo = geo, time = time, hl = hl)
+hadoop_trend <- gtrends(keyword = "Hadoop", geo = geo, time = time, hl = hl)
+spark_trend <- gtrends(keyword = "Spark", geo = geo, time = time, hl = hl)
+java_trend <- gtrends(keyword = "Java", geo = geo, time = time, hl = hl)
+tableau_trend <- gtrends(keyword = "Tableau", geo = geo, time = time, hl = hl)
+datamining_trend <- gtrends(keyword = "Data Mining", geo = geo, time = time, hl = hl)
+hive_trend <- gtrends(keyword = "Hive", geo = geo, time = time, hl = hl)
+Sys.sleep(10)
+sas_trend <- gtrends(keyword = "SAS", geo = geo, time = time, hl = hl)
+bigtrend_trend <- gtrends(keyword = "Big Data", geo = geo, time = time, hl = hl)
+aws_trend <- gtrends(keyword = "AWS", geo = geo, time = time, hl = hl)
+scala_trend <- gtrends(keyword = "Scala", geo = geo, time = time, hl = hl)
+nosql_trend <- gtrends(keyword = "NoSQL", geo = geo, time = time, hl = hl)
+c_trend <- gtrends(keyword = "C/C++", geo = geo, time = time, hl = hl)
+nlp_trend <- gtrends(keyword = "Natural Language Processing", geo = geo, time = time, hl = hl)
+oracle_trend <- gtrends(keyword = "Oracle", geo = geo, time = time, hl = hl)
+datawarehouse_trend <- gtrends(keyword = "Data Warehouse", geo = geo, time = time, hl = hl)
+linux_trend <- gtrends(keyword = "Linux", geo = geo, time = time, hl = hl)
+Sys.sleep(10)
+ai_trend <- gtrends(keyword = "AI", geo = geo, time = time, hl = hl)
+micrsql_trend <- gtrends(keyword = "Microsoft SQL Server", geo = geo, time = time, hl = hl)
+tensorflow_trend <- gtrends(keyword = "TensorFlow", geo = geo, time = time, hl = hl)
+kafka_trend <- gtrends(keyword = "Kafka", geo = geo, time = time, hl = hl)
+azure_trend <- gtrends(keyword = "Azure", geo = geo, time = time, hl = hl)
+
+```
+
+## 7.3 Join trend data for interest
+
+```{r join-trends}
+# Join trend data for terms rising in interest
+python_trend$interest_over_time$ml_hits = ml_trend$interest_over_time$hits
+python_trend$interest_over_time$spark_hits = spark_trend$interest_over_time$hits
+python_trend$interest_over_time$tableau_hits = tableau_trend$interest_over_time$hits
+python_trend$interest_over_time$kafka_hits = kafka_trend$interest_over_time$hits
+python_trend$interest_over_time$azure_hits = azure_trend$interest_over_time$hits
+
+# Join trend data for terms declining in interest
+sql_trend$interest_over_time$java_hits = java_trend$interest_over_time$hits
+sql_trend$interest_over_time$hadoop_hits = hadoop_trend$interest_over_time$hits
+sql_trend$interest_over_time$datamining_hits = datamining_trend$interest_over_time$hits
+sql_trend$interest_over_time$sas_hits = sas_trend$interest_over_time$hits
+sql_trend$interest_over_time$oracle_hits = oracle_trend$interest_over_time$hits
+
+# Join trend data for terms stable in interest
+r_trend$interest_over_time$scala_hits = scala_trend$interest_over_time$hits
+r_trend$interest_over_time$nosql_hits = nosql_trend$interest_over_time$hits
+r_trend$interest_over_time$c_hits = c_trend$interest_over_time$hits
+r_trend$interest_over_time$datawarehouse_hits = datawarehouse_trend$interest_over_time$hits
+
+# Join trend data for terms that peaked in interest
+bigtrend_trend$interest_over_time$tensorflow_hits = tensorflow_trend$interest_over_time$hits
+bigtrend_trend$interest_over_time$hadoop_hits = hadoop_trend$interest_over_time$hits
+```
+
+### Rising interest over time
+```{r rising}
+# Plot rising interest over time
+ggplot() +
+  geom_line(data=python_trend$interest_over_time, aes(y= hits, x= date, colour="a"), size=1 ) +
+  geom_line(data=python_trend$interest_over_time, aes(y= ml_hits, x= date, colour="b"), size=1) +
+  geom_line(data=python_trend$interest_over_time, aes(y= spark_hits, x= date, colour="c"), size=1) +
+  geom_line(data=python_trend$interest_over_time, aes(y= tableau_hits, x= date, colour="d"), size=1) +
+  geom_line(data=python_trend$interest_over_time, aes(y= azure_hits, x= date, colour="e"), size=1) +
+  xlab("Date") + ylab("Interest over time") +
+  scale_color_discrete(name = "Increasing Interest Over Time", 
+                       labels = c("Python", "Machine Learning", "Spark", "Tableau", "Azure"))
+```
+
+### Declining interest over time
+```{r declining}
+# Plot declining interest over time
+ggplot() +
+  geom_line(data=sql_trend$interest_over_time, aes(y=hits, x=date, color="a"), size=1) +
+  geom_line(data=sql_trend$interest_over_time, aes(y=java_hits, x=date, color="b"), size=1) +
+  geom_line(data=sql_trend$interest_over_time, aes(y=sas_hits, x=date, color="d"), size=1) +
+  geom_line(data=sql_trend$interest_over_time, aes(y=oracle_hits, x=date, color="e"), size=1) +
+  xlab("Date") + ylab("Interest over time") +
+  scale_color_discrete(name = "Decreasing Interest Over Time", 
+                       labels = c("SQL", "Java", "SAS", "Oracle"))
+```
+
+### Stable interest over time
+```{r stable}
+# Plot stable interest over time
+ggplot() +
+  geom_line(data=r_trend$interest_over_time, aes(y=hits, x=date, color="a"), size=1) +
+  geom_line(data=r_trend$interest_over_time, aes(y=scala_hits, x=date, color="b"), size=1) +
+  geom_line(data=r_trend$interest_over_time, aes(y=nosql_hits, x=date, color="c"), size=1) +
+  geom_line(data=r_trend$interest_over_time, aes(y=c_hits, x=date, color="d"), size=1) +
+  geom_line(data=r_trend$interest_over_time, aes(y=datawarehouse_hits, x=date, color="e"), size=1) +
+  xlab("Date") + ylab("Interest over time") +
+  scale_color_discrete(name = "Stable Interest Over Time", 
+                       labels = c("R", "Scala", "NoSQL", "C", "Data Warehouse"))
+```
+
+### Peaked interest over time
+```{r peaked}
+# Plot peaked interest over time
+ggplot() +
+  geom_line(data=bigtrend_trend$interest_over_time, aes(y=hits, x=date, color="a"), size=1) +
+  geom_line(data=bigtrend_trend$interest_over_time, aes(y=as.numeric(tensorflow_hits), 
+                                                        x=date, color="b"), size=1) +
+  geom_line(data=bigtrend_trend$interest_over_time, aes(y=hadoop_hits, x=date, color="c"), size=1) +
+  xlab("Date") + ylab("Interest over time") +
+  scale_color_discrete(name = "Peak Popularity", labels = c("Big Data", "Tensorflow", "Hadoop"))
+```
+\
+**Findings:**\
+
+Terms with increasing popularity provide the least surprising findings, though the sharp increase in Azure was slightly unforeseen.
+For terms decreasing in popularity, the steady drop in popularity of SQL was unexpected, though after discussing within our team, we think SQL searches may have been replaced by terms such as “BigQuery” and “PostgreSQL”, which are both rising in search volume.
+Determining what skills are stable in interest is as important as knowing which ones are rising in interest, since you can make stronger assumptions those skills will remain relevant. It is encouraging to know R’s popularity has remained fairly stable over the last 11 years as the CUNY S.P.S. Data Science program is tightly coupled with the language.
+
+--------------------------------------------------------------------------------
+
+\clearpage
+
+# 8.0 Data Models: Classification Tree, Random Forest & Naive Bayes
+One use case of analyzing the most sought after data science skills is to predict a salary range based on your current skill set or the skill set you look to cultivate. This challenge takes the form of a classification, where we can feed in an individual’s skills and location and provide an estimated salary range. The task required extensive data preparation -- dummy variables for over a hundred attributes -- in order to be able to fit the models of interest. Those models were: classification tree, Random Forest, and Naive Bayes.
+
+## 8.1 Data preperation for modeling
+```{r prep-data-for-modeling}
+
+# Include skills with at least 100 observations
+skills_hundred_obs <- top_skills %>% filter(n >= 100)
+df_jobs_skills_hundred_obs <- d607_p3_all_recs %>% filter(skill_desc %in% skills_hundred_obs$skill_desc)
+
+# Create dummy variables for skills with at least 100 observations
+df_jobs_skills_hundred_obs_dummies <- dummy_cols(df_jobs_skills_hundred_obs, 
+                                      select_columns = c("skill_desc"), remove_first_dummy = TRUE)
+
+# Remove unneeded columns
+df_jobs_skills_hundred_obs_dummies <- df_jobs_skills_hundred_obs_dummies %>% 
+                                      select(-(c("job_title", "company", "no_of_emp", 
+                                         "revenue_range", "industry", 
+                                         "postal_code", "skill_id", "skill_desc")))
+
+# Group by job_id and for each column use max value (0 or 1) as aggregate value
+df_jobs_skills_hundred_obs_dummies <- df_jobs_skills_hundred_obs_dummies %>% 
+                                                      group_by(job_id) %>% 
+                                                      summarise_each(list(max))
+
+# Find top locations by observation count
+top_locations <- d607_p3_all_recs %>% select(skill_id, postal_code) %>% 
+                                      group_by(postal_code) %>% 
+                                      summarise(n = n()) %>%
+                                      arrange(desc(n))
+
+# Include locations with at least 100 observations
+locations_hundred_obs <- top_locations %>% filter(n >= 100)
+df_jobs_locs_hundred_obs <- d607_p3_all_recs %>% 
+                                 filter(postal_code %in% locations_hundred_obs$postal_code)
+
+# Create dummy variables for locations with at least 100 observations
+df_jobs_locs_hundred_obs_dummies <- dummy_cols(df_jobs_locs_hundred_obs, 
+                                      select_columns = c("postal_code"), remove_first_dummy = TRUE)
+
+# Remove unneeded columns
+df_jobs_locs_hundred_obs_dummies <- df_jobs_locs_hundred_obs_dummies %>% 
+                                    select(-(c("job_title", "company", "no_of_emp", 
+                                         "salary_range", "revenue_range", "industry", 
+                                         "postal_code", "skill_id", "skill_desc")))
+
+# Group by job_id and for each column use max value of one of the rows as aggregate value
+df_jobs_locs_hundred_obs_dummies <- df_jobs_locs_hundred_obs_dummies %>% 
+                                                      group_by(job_id) %>% 
+                                                      summarise_each(list(max))
+
+# Join skills and locations
+df_model <- df_jobs_skills_hundred_obs_dummies %>% inner_join(df_jobs_locs_hundred_obs_dummies)
+
+# Rename problematic column names
+df_model <- df_model %>% rename(skill_desc_C = "skill_desc_C/C++",
+                                        skill_desc_C_Sharp = "skill_desc_C#",
+                                        skill_desc_CICD = "skill_desc_CI/CD",
+                                        skill_desc_TSSCIClearance = "skill_desc_TS/SCIClearance")
+
+```
+
+## 8.2 Create train test split
+```{r train-test-split}
+
+# Create train test split
+train <- df_model %>% dplyr::sample_frac(.75)
+test  <- dplyr::anti_join(df_model, train, by = 'job_id')
+
+```
+
+## 8.3 Reorder target variable levels
+```{r class-sizes}
+# Reorder target variable levels
+positions <- c("<80000", "80000-99999", "100000-119999", "120000-139999", "140000-159999", ">160000")
+df_model$salary_range <- factor(df_model$salary_range, levels=positions)
+# To get an idea of minimum accuracy
+# Review the distribution / class sizes of the target variable by percentage
+ggplot(df_model, aes(x = salary_range)) +  
+  geom_bar(aes(y = (..count..)/sum(..count..)), fill="turquoise3") + 
+  ggtitle("Salary Range by Percentage") + xlab("Percentage") + ylab("Salary Range")
+
+```
+
+## 8.4 Fit model training data
+```{r classification-tree}
+
+# Fit model training data
+model_ct <- rpart(salary_range ~ . - job_id, method="class", data=train)
+
+# Plot classification tree
+rpart.plot(model_ct, main="Classification Tree for Salary Range")
+
+# Make predictions on test data
+preds_ct <- predict(model_ct, as.data.frame(test), type = "class")
+
+# Review Confusion Matrix
+confusionMatrix(preds_ct, as.factor(test$salary_range))
+
+```
+
+## 8.5 Fit Top Skills and Locations Random Forest Model
+```{r random-forest}
+
+# Fit Top Skills and Locations Random Forest Model
+model_rf <- randomForest(as.factor(salary_range) ~ . - job_id, method="class",  data=train)
+
+# Make predictions on test data
+preds_rf <- predict(model_rf, test)
+
+# Review Confusion Matrix
+confusionMatrix(preds_rf, as.factor(test$salary_range))
+
+```
+
+## 8.6 Fit Naive Bayes model
+```{r naive-bayes}
+
+# Fit Naive Bayes model
+model_nb <- naiveBayes(as.factor(salary_range)  ~ . - job_id, data = train)
+
+# Make predictions on test data
+preds_nb <- predict(model_nb, as.data.frame(test))
+
+# Review Confusion Matrix
+confusionMatrix(preds_nb, as.factor(test$salary_range))
+
+```
+\
+**Findings:**\
+
+Random Forest provides the best results across several metrics such as: Sensitivity, Specificity, and Balanced Accuracy by class as well as overall Kappa and accuracy. Both Sensitivity and Specificity are useful since there is not a strong preference for either false positives or false negatives. Kappa and Balanced Accuracy are helpful over general accuracy since the classes are imbalanced.
+The Classification Tree model’s strongest point is naturally the easy to comprehend tree visual for understanding how select factors can lead to a particular salary range.
+Naive Bayes is the only model that does not have an accuracy better than the largest class which saw approximately 24% of observations. Though it is modestly useful in predicting low and high salaries (e.g. <80000 and >160000), which may be the most important aspects of utilizing classifiers for predicting salary range.
+
+--------------------------------------------------------------------------------
+
+\clearpage
+
+# 9.0 Conclusion \
+* Based on the dataset - Python, Machine Learning and SQL are most valuable skills
+* Average salary is between 100 and 110 and most of the jobs are in California and NEw York
+* These findings and conclusions matches closely with the model we ran
+\
+* Trends - key takeaways are the increasing interest in Python and machine learning over the last 11 years as well as the stable interest in R and NoSQL
+* Models Our modeling section showed Random Forest to be the most reliable model for this classification task, based on several  evaluation metrics. 
+* Kappa and balanced accuracy were our leading evaluators, though sensitivity and specificity were also useful as neither false positives or false negatives are preferred over the other.
+* Our analysis was focused on software and technical skills. Soft skills were not directly available from the job post. 
+ 
+--------------------------------------------------------------------------------
+
+\clearpage
+\
+\
+
+# References
+Philippe Massicotte, Dirk Eddelbuettel (2021). gtrendsR: Perform and Display Google Trends Queries. R package version 1.4.8.\
+Terry Therneau, Beth Atkinson, Brian Ripley (2019). rpart: Recursive partitioning for classification,regression and survival trees. R package version 4.1.15 \
+Leo Breiman and Adele Cutler (2018). randomForest: Breiman and Cutler's Random Forests for Classification and Regression. R package version 4.6.14. \
+Michal Majka (2020). naivebayes: High Performance Implementation of the Naive Bayes Algorithm. R package version 0.9.7. \
+Max Kuhn, Jed Wing, Steve Weston, Andre Williams (2020). caret: Misc functions for training and plotting classification and regression models. R package version 6.0.86 \
+Kenneth Tay (2020) ["What is balanced accuracy?"](https://statisticaloddsandends.wordpress.com/2020/01/23/what-is-balanced-accuracy/) (edited) \
+Job dataset (2018) [Indeed Dataset - Data Scientist/Analyst/Engineer](https://www.kaggle.com/elroyggj/indeed-dataset-data-scientistanalystengineer?select=indeed_job_dataset.csv) \
+Agile & scrum [What is Scrum](https://www.scrum.org) \
+--------------------------------------------------------------------------------
+
+\clearpage
+
