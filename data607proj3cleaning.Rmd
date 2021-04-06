@@ -140,4 +140,31 @@ ny_skills %>%
   ggplot(aes(reorder(skill_list,percent),percent))+geom_bar(stat = 'identity', fill = '#C4A9C4')+coord_flip()+labs(x = 'Skills',title = "Most Desired Data Science Skills Skills in NY")
 ```
 
+```{r}
+top10 = skills%>%
+  group_by(skill_list)%>%
+  summarize(count = n())%>%
+  arrange(desc(count))%>%
+  head(10)
+top_skills = top10[[1]]
+
+industry = merge(jobs,skills, on ="X")%>%
+  merge(companies, on = 'Company')
+
+industry = industry[industry['Company_Industry'][[1]] != "",]
+
+industry = industry[c('Company_Industry','skill_list')]
+
+for (skill in top_skills){
+  tech = industry[industry$skill_list == skill,]
+  size = dim(tech)[1]
+  metrics = tech %>%
+    group_by(Company_Industry)%>%
+    summarize(percent = n()/size)%>%
+    arrange(desc(percent))%>%
+    head(5)
+  print(ggplot(metrics,mapping = aes(x = reorder(Company_Industry,percent),y = percent))+geom_bar(stat = 'identity')+coord_flip()+labs(x = 'Company Industry',title = paste("Top Industries Seeking",skill)))
+  }
+
+```
 
